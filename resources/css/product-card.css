@@ -89,7 +89,8 @@
         transform 350ms var(--product-card-ease),
         box-shadow 350ms var(--product-card-ease),
         border-color 350ms ease;
-    animation: product-card-enter 520ms var(--product-card-ease) both;
+    /* backwards (not both/forwards): after entry ends, hover transforms must work */
+    animation: product-card-enter 520ms var(--product-card-ease) backwards;
     animation-delay: var(--product-card-stagger);
     will-change: transform;
 }
@@ -150,7 +151,7 @@
 }
 
 /* Hover lift — fine pointers only (avoids sticky hover on touch) */
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) {
     .product-card:hover {
         transform: translateY(-4px);
         box-shadow:
@@ -222,7 +223,7 @@
     opacity: 0;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) {
     .product-card:hover .product-card-image {
         box-shadow:
             0 0 0 1px rgb(50 149 55 / 0.08),
@@ -250,13 +251,13 @@
     font-weight: 700;
     padding: 0.125rem 0.5rem;
     border-radius: 9999px;
-    animation: product-card-discount-enter 480ms var(--product-card-ease) both;
+    animation: product-card-discount-enter 480ms var(--product-card-ease) backwards;
     animation-delay: calc(var(--product-card-stagger) + 80ms);
     transition: transform 220ms var(--product-card-ease);
     transform-origin: left center;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) {
     .product-card:hover .product-card-discount {
         transform: scale(1.04);
     }
@@ -288,7 +289,7 @@
         color 280ms ease;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) {
     .product-card:hover .product-card-name {
         transform: translateY(-1.5px);
         color: #084121; /* brand dark */
@@ -305,7 +306,7 @@
     transform: translateY(0);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) {
     .product-card:hover .product-card-stock {
         opacity: 0.92;
         transform: translateY(-1px);
@@ -321,7 +322,7 @@
     transform-origin: left center;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) {
     .product-card:hover .product-card-rating {
         transform: scale(1.03);
     }
@@ -342,7 +343,7 @@
     will-change: transform;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) {
     .product-card-add:hover:not(:disabled) {
         transform: scale(1.04);
         box-shadow: 2px 2px 0 #084121;
@@ -363,7 +364,7 @@
     will-change: transform;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) {
     .product-card-pill:hover:not(:disabled) {
         transform: scale(1.02);
         box-shadow:
