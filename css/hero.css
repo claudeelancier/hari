@@ -37,8 +37,9 @@ img {
 .hero {
   position: relative;
   isolation: isolate;
-  min-height: 100svh;
   min-height: 90vh;
+  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   align-items: stretch;
   overflow: hidden;
@@ -246,9 +247,9 @@ img {
   display: inline-block;
   background: linear-gradient(
     110deg,
-    #b8893a 0%,
-    #f0d58a 38%,
-    #c9a24a 62%,
+    #e0b34d 0%,
+    #fff1c2 36%,
+    #d4a017 58%,
     #f6e7b8 100%
   );
   background-size: 180% 100%;
@@ -317,9 +318,11 @@ img {
 .hero-btn--primary:hover,
 .hero-btn--primary:focus-visible {
   transform: translateY(-3px);
+  background: linear-gradient(180deg, #fff1c2 0%, #e8c872 100%);
   box-shadow:
-    0 16px 36px rgba(201, 162, 74, 0.42),
-    0 0 0 6px rgba(201, 162, 74, 0.12);
+    0 16px 36px rgba(201, 162, 74, 0.48),
+    0 0 22px rgba(232, 200, 114, 0.35),
+    0 0 0 6px rgba(201, 162, 74, 0.14);
 }
 
 .hero-btn__sweep {
