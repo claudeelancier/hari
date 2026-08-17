@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enquiry | Srimurugan Travel</title>
+  <meta name="description" content="Send a tour enquiry to Srimurugan Travel — destination, dates, travellers and tour type.">
+  <meta name="theme-color" content="#0B132B">
+  <meta property="og:title" content="Enquiry | Srimurugan Travel">
+  <meta property="og:description" content="Send a tour enquiry to Srimurugan Travel — destination, dates, travellers and tour type.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1200&q=80">
+  <link rel="canonical" href="https://www.srimurugantravel.com/enquire">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  
+</head>
+<body>
+<a class="sr-only" href="#main" style="position:absolute;left:-999px">Skip to content</a>
+<header id="site-header"></header>
+<main id="main">
+
+<section class="page-hero">
+  <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80" alt="Mountain road at dusk">
+  <div class="shade"></div>
+  <div class="container inner"><p class="eyebrow">Plan with us</p><h1>Travel enquiry</h1></div>
+</section>
+<section class="section">
+  <div class="container" style="max-width:860px">
+    <form class="form-card" data-enquire>
+      <div class="form-grid">
+        <div><label>Name<span> *</span><input name="name" required></label></div>
+        <div><label>Email<span> *</span><input type="email" name="email" required></label></div>
+        <div><label>Contact no<span> *</span><input name="contact_no" required></label></div>
+        <div><label>Alternate no<input name="alternate_no"></label></div>
+        <div class="full"><label>Address<textarea name="address" rows="3"></textarea></label></div>
+        <div><label>Destination / place of interest<span> *</span><input name="destination" required></label></div>
+        <div><label>Tour starting place<span> *</span><input name="starting_place" required></label></div>
+        <div><label>From date<input type="date" name="tentative_fromdate"></label></div>
+        <div><label>To date<input type="date" name="tentative_todate"></label></div>
+        <div><label>No. of days<span> *</span><input type="number" min="1" name="days" required></label></div>
+        <div><label>Adults<span> *</span><input type="number" min="1" name="adult" value="2" required></label></div>
+        <div><label>Children<input type="number" min="0" name="child" value="0"></label></div>
+        <div><label>Tour type
+          <select name="type"><option>Leisure</option><option>Pilgrimage</option><option>Honeymoon</option><option>Family</option><option>Education</option><option>Custom / Elite</option></select>
+        </label></div>
+        <div><label>Hotel type
+          <select name="hotel_type"><option value="">Select</option><option>3 star</option><option>4 star</option><option>5 star</option></select>
+        </label></div>
+        <div><label>Budget
+          <select name="budget"><option>Flexible</option><option>Under ₹25,000</option><option>₹25,000 – ₹75,000</option><option>₹75,000 – ₹1,50,000</option><option>Above ₹1,50,000</option></select>
+        </label></div>
+        <div class="full"><label>Other requirements<textarea name="other_requirement" rows="4"></textarea></label></div>
+      </div>
+      <button class="btn btn-gold" type="submit" style="margin-top:18px">Submit enquiry</button>
+      <p class="form-note">On the production PHP site this form posts to enquiry.php. This redesign keeps the same fields so the backend can be reconnected without renaming inputs.</p>
+      <p class="form-note" data-success hidden>Enquiry captured in this preview. Wire the action to enquiry.php on the live server to restore email/CRM delivery.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+<footer id="site-footer"></footer>
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="Image preview"><button type="button" aria-label="Close">&times;</button><img alt=""></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
