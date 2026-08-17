@@ -113,6 +113,12 @@
       btn.setAttribute("aria-expanded", open ? "true" : "false");
       btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     });
+    panel.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        panel.classList.remove("open");
+        btn.setAttribute("aria-expanded", "false");
+      });
+    });
   }
 
   function heroSlider() {

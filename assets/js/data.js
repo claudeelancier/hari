@@ -127,7 +127,7 @@ SMT.internationalTours = [
   { code: "F13", title: "Indonesia Bali", dest: "Bali", days: "6D / 5N", price: "94,990", href: "international.html#bali", image: SMT.img("photo-1558005530-a7958896ec60", 800), highlights: ["Ubud temples", "Beach day", "Cultural evening"] },
   { code: "F7", title: "Bangkok / Pattaya", dest: "Thailand", days: "5D / 4N", price: "64,990", href: "international.html#thailand", image: SMT.img("photo-1508009603885-50cf7c8dd0d5", 800), highlights: ["Temple circuit", "Coral island", "Night markets"] },
   { code: "F41", title: "Europe Countries", dest: "Europe", days: "12D / 11N", price: "3,70,000", href: "international.html#europe", image: SMT.img("photo-1473951574080-01fe45ec8643", 800), highlights: ["Multi-country", "Coach touring", "Iconic capitals"] },
-  { code: "F11", title: "Sri Lanka Special", dest: "Sri Lanka", days: "5D / 4N", price: "54,990", href: "international.html#srilanka", image: SMT.img("photo-1566296311134-c3b5e5e3c0b1", 800), highlights: ["Kandy", "Coastal stay", "Cultural sites"] },
+  { code: "F11", title: "Sri Lanka Special", dest: "Sri Lanka", days: "5D / 4N", price: "54,990", href: "international.html#srilanka", image: SMT.img("photo-1566073771259-6a8506099945", 800), highlights: ["Kandy", "Coastal stay", "Cultural sites"] },
   { code: "F33", title: "Malaysia", dest: "Malaysia", days: "5D / 4N", price: "64,990", href: "international.html#malaysia", image: SMT.img("photo-1596422846543-75c6fc197f07", 800), highlights: ["KL towers", "Genting", "City & hills"] }
 ];
 

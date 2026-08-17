@@ -166,6 +166,7 @@ p { margin: 0; }
   height: var(--header-h);
   display: flex;
   align-items: center;
+  overflow: visible;
   transition: background 0.4s ease, box-shadow 0.4s ease, height 0.4s ease, backdrop-filter 0.4s ease;
 }
 .site-header.is-solid {
@@ -761,6 +762,12 @@ p { margin: 0; }
 }
 .office-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 
+.contact-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
 .about-split {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
@@ -840,9 +847,9 @@ p { margin: 0; }
     bottom: 16px;
     border-radius: 18px;
   }
-  .hero-dots { bottom: auto; top: auto; display: none; }
-  .hero-controls { right: 12px; top: auto; bottom: 280px; flex-direction: row; }
-  .dest-grid, .offers-grid, .why-grid, .feature-grid, .stats-grid, .footer-grid, .pkg-grid, .office-grid, .form-grid {
+  .hero-dots { bottom: auto; top: calc(var(--header-h) + 12px); left: 20px; transform: none; }
+  .hero-controls { right: 12px; top: auto; bottom: 300px; flex-direction: row; }
+  .dest-grid, .offers-grid, .why-grid, .feature-grid, .stats-grid, .footer-grid, .pkg-grid, .office-grid, .form-grid, .contact-split {
     grid-template-columns: 1fr;
   }
   .masonry { columns: 2; }

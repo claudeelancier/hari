@@ -133,9 +133,9 @@ PAGES["index.html"] = dict(
       <a class="feature-card" href="train.html"><div class="icon-line">01</div><h3>Train pilgrimage</h3><p>Divine journeys on a spiritual pathway, escorted from Madurai.</p></a>
       <a class="feature-card" href="train.html"><div class="icon-line">02</div><h3>Budget train tour</h3><p>Economic India roamings with comfort and care.</p></a>
       <a class="feature-card" href="domestic.html"><div class="icon-line">03</div><h3>Domestic flight tour</h3><p>Your holidays made simple across Incredible India.</p></a>
-      <a class="feature-card" href="packages.html"><div class="icon-line">04</div><h3>Education tour</h3><p>Industrial visits and college tours, planned end to end.</p></a>
-      <a class="feature-card" href="packages.html"><div class="icon-line">05</div><h3>Weekend tour</h3><p>Collated getaways when you have just a few days.</p></a>
-      <a class="feature-card" href="packages.html"><div class="icon-line">06</div><h3>Honeymoon</h3><p>Handpicked packages for couples, near and far.</p></a>
+      <a class="feature-card" href="education.html"><div class="icon-line">04</div><h3>Education tour</h3><p>Industrial visits and college tours, planned end to end.</p></a>
+      <a class="feature-card" href="weekend.html"><div class="icon-line">05</div><h3>Weekend tour</h3><p>Collated getaways when you have just a few days.</p></a>
+      <a class="feature-card" href="honeymoon.html"><div class="icon-line">06</div><h3>Honeymoon</h3><p>Handpicked packages for couples, near and far.</p></a>
       <a class="feature-card" href="customize.html"><div class="icon-line">07</div><h3>Customised packages</h3><p>Tailor-made itineraries, the way you like.</p></a>
       <a class="feature-card" href="enquire.html"><div class="icon-line">08</div><h3>Elite enquiry</h3><p>Tell us your dream trip — our planners will craft it.</p></a>
     </div>
@@ -441,7 +441,7 @@ PAGES["contact.html"] = dict(
   <div class="container inner"><p class="eyebrow">Reach us</p><h1>Contact</h1></div>
 </section>
 <section class="section">
-  <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+  <div class="container contact-split">
     <div>
       <h2>Head office</h2>
       <p style="color:var(--muted);margin:12px 0 20px">10, North Avani Moola Street, Near Meenakshi Temple, Madurai, Tamil Nadu 625001</p>
@@ -481,7 +481,65 @@ PAGES["contact.html"] = dict(
     </div>
   </div>
 </section>
-<style>@media(max-width:760px){#main .container[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}}</style>
+""",
+)
+
+PAGES["honeymoon.html"] = dict(
+    title="Honeymoon Tours | Srimurugan Travel",
+    description="Handpicked honeymoon packages from Srimurugan Travel — Maldives, Bali, Goa, Kashmir and more.",
+    canonical="https://www.srimurugantravel.com/honeymoon-tour",
+    extra_head="",
+    body="""
+<section class="page-hero">
+  <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1800&q=80" alt="Overwater villa in a tropical lagoon">
+  <div class="shade"></div>
+  <div class="container inner"><p class="eyebrow">For two</p><h1>Honeymoon journeys</h1></div>
+</section>
+<section class="section"><div class="container">
+<p style="color:var(--muted);max-width:62ch;margin-bottom:28px">Handpicked packages for couples, using the same Maldives, Bali, Goa and Kashmir departures as the live catalogue. Tell us your dates and we will shape stays and transfers around you.</p>
+<div class="pkg-grid" data-packages="international"></div>
+<p style="margin-top:28px"><a class="btn btn-gold" href="enquire.html?tour=Honeymoon">Enquire for a couple’s itinerary</a></p>
+</div></section>
+""",
+)
+
+PAGES["education.html"] = dict(
+    title="Education Tours | Srimurugan Travel",
+    description="Industrial visits and college education tours planned by Srimurugan Travel, Madurai.",
+    canonical="https://www.srimurugantravel.com/education-tours",
+    extra_head="",
+    body="""
+<section class="page-hero">
+  <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1800&q=80" alt="University campus walkway">
+  <div class="shade"></div>
+  <div class="container inner"><p class="eyebrow">Campus to country</p><h1>Education tours</h1></div>
+</section>
+<section class="section"><div class="container about-split">
+<div>
+<h2>Industrial visits and college circuits</h2>
+<p style="margin-top:14px;color:var(--muted)">Group movements with escorts, stays and factory or institutional visits — the same education-tour service described on the live Srimurugan Travel site. Share headcount, cities and academic dates via the enquiry form.</p>
+<a class="btn btn-navy" style="margin-top:20px" href="enquire.html?tour=Education%20tour">Request a group quote</a>
+</div>
+<img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80" alt="Students on a study trip" loading="lazy">
+</div></section>
+""",
+)
+
+PAGES["weekend.html"] = dict(
+    title="Weekend Tours | Srimurugan Travel",
+    description="Short weekend getaways planned by Srimurugan Travel.",
+    canonical="https://www.srimurugantravel.com/weekend-tour",
+    extra_head="",
+    body="""
+<section class="page-hero">
+  <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80" alt="Weekend beach escape">
+  <div class="shade"></div>
+  <div class="container inner"><p class="eyebrow">Short breaks</p><h1>Weekend tours</h1></div>
+</section>
+<section class="section"><div class="container">
+<p style="color:var(--muted);margin-bottom:24px">Collated weekend getaways when you have just a few days. Ask for current short-haul departures from Madurai and Chennai.</p>
+<div class="pkg-grid" data-packages="domestic"></div>
+</div></section>
 """,
 )
 
