@@ -46,10 +46,10 @@ const cloth = new THREE.Mesh(
       varying float vWave;
 
       float wave(vec2 p, float t) {
-        float w = sin(p.x * 1.15 + t * 0.62) * 0.42;
-        w += sin(p.y * 1.7 - t * 0.48 + p.x * 0.35) * 0.28;
-        w += sin((p.x + p.y) * 2.4 + t * 0.9) * 0.08;
-        w += sin(length(p - vec2(uPointer.x * 2.0, uPointer.y * 1.4)) * 3.2 - t) * 0.18;
+        float w = sin(p.x * 1.35 + t * 0.72) * 0.62;
+        w += sin(p.y * 1.95 - t * 0.55 + p.x * 0.4) * 0.42;
+        w += sin((p.x + p.y) * 2.8 + t * 1.05) * 0.16;
+        w += sin(length(p - vec2(uPointer.x * 2.2, uPointer.y * 1.5)) * 3.4 - t * 1.15) * 0.32;
         return w;
       }
 
@@ -57,14 +57,14 @@ const cloth = new THREE.Mesh(
         vec3 pos = position;
         float t = uTime * mix(1.0, 0.0, uReduce);
         float w = wave(pos.xy * 0.42, t);
-        pos.z += w * (1.15 + uPointer.y * 0.2);
+        pos.z += w * (1.55 + uPointer.y * 0.28);
         pos.x += uPointer.x * 0.35;
         pos.y += sin(uTime * 0.18) * 0.08;
 
         vec3 tPos = pos + vec3(0.04, 0.0, 0.0);
-        tPos.z += wave(tPos.xy * 0.42, t) * 1.15;
+        tPos.z += wave(tPos.xy * 0.42, t) * 1.55;
         vec3 bPos = pos + vec3(0.0, 0.04, 0.0);
-        bPos.z += wave(bPos.xy * 0.42, t) * 1.15;
+        bPos.z += wave(bPos.xy * 0.42, t) * 1.55;
         vNormalW = normalize(cross(tPos - pos, bPos - pos));
         vWave = w;
         vPos = pos;
@@ -87,15 +87,16 @@ const cloth = new THREE.Mesh(
         vec3 clay = vec3(0.76, 0.36, 0.18);
         vec3 aqua = vec3(0.72, 0.84, 0.82);
 
-        float fold = smoothstep(-0.4, 0.55, vWave);
-        vec3 col = mix(ivory, champagne, fold * 0.75);
-        col = mix(col, aqua, fres * 0.55);
-        col = mix(col, clay, pow(max(n.x * 0.5 + 0.15, 0.0), 2.0) * 0.28);
-        col += fres * 0.22;
-        col += vec3(0.08, 0.05, 0.02) * (uPointer.x * 0.5 + 0.5) * 0.15;
+        float fold = smoothstep(-0.55, 0.7, vWave);
+        vec3 col = mix(ivory, champagne, fold * 0.88);
+        col = mix(col, aqua, fres * 0.62);
+        col = mix(col, clay, pow(max(n.x * 0.55 + 0.2, 0.0), 1.6) * 0.38);
+        col += fres * 0.32;
+        col += vec3(0.12, 0.07, 0.03) * (uPointer.x * 0.5 + 0.5) * 0.22;
+        col += vec3(1.0, 0.96, 0.9) * pow(max(n.z, 0.0), 8.0) * 0.35;
 
-        float edge = smoothstep(4.9, 1.2, abs(vPos.x)) * smoothstep(6.2, 2.0, abs(vPos.y));
-        float alpha = 0.78 * edge;
+        float edge = smoothstep(5.1, 0.9, abs(vPos.x)) * smoothstep(6.4, 1.6, abs(vPos.y));
+        float alpha = 0.92 * edge;
         gl_FragColor = vec4(col, alpha);
       }
     `,

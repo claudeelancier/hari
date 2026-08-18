@@ -139,9 +139,9 @@ body.has-cursor {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(244, 239, 230, 0.82) 0%,
-    rgba(244, 239, 230, 0.18) 46%,
-    rgba(244, 239, 230, 0.05) 100%
+    rgba(244, 239, 230, 0.78) 0%,
+    rgba(244, 239, 230, 0.08) 38%,
+    rgba(244, 239, 230, 0) 62%
   );
   pointer-events: none;
 }
