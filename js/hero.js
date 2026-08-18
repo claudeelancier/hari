@@ -242,25 +242,36 @@
     var delay = 0;
     nodes.forEach(function (node) {
       if (node.nodeType === Node.TEXT_NODE) {
-        node.textContent.split("").forEach(function (char) {
-          appendChar(title, char, delay);
-          delay += 1;
-        });
+        delay = splitWords(title, node.textContent, delay);
       } else if (node.nodeName === "EM") {
         var em = document.createElement("em");
-        node.textContent.split("").forEach(function (char) {
-          appendChar(em, char, delay);
-          delay += 1;
-        });
+        delay = splitWords(em, node.textContent, delay);
         title.appendChild(em);
       }
     });
   }
 
+  function splitWords(parent, text, delay) {
+    var parts = text.replace(/\s+/g, " ").trim().split(" ");
+    parts.forEach(function (word, index) {
+      var wrap = document.createElement("span");
+      wrap.className = "word";
+      word.split("").forEach(function (char) {
+        appendChar(wrap, char, delay);
+        delay += 1;
+      });
+      parent.appendChild(wrap);
+      if (index < parts.length - 1) {
+        parent.appendChild(document.createTextNode(" "));
+      }
+    });
+    return delay;
+  }
+
   function appendChar(parent, char, delay) {
     var span = document.createElement("span");
     span.className = "char";
-    span.textContent = char === " " ? "\u00a0" : char;
+    span.textContent = char;
     span.style.animationDelay = 0.85 + delay * 0.032 + "s";
     parent.appendChild(span);
   }

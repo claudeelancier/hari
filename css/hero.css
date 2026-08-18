@@ -247,6 +247,11 @@ body.has-cursor {
   color: #f3d7a8;
 }
 
+.hero__title .word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .hero__title .char {
   display: inline-block;
   animation: char-in 1.15s var(--ease) both;
