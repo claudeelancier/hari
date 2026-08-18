@@ -1,5 +1,3 @@
 # Panni — Light Hero
 
-Cinematic light-theme hero for **Panni**: WebGL silk cloth, ivory sunlight, and a split-type headline (`Panni tha. Stillness, in silk.`).
-
-Open `index.html` in a local server (ES modules + Three.js CDN).
+Light-theme cinematic hero. Animations run from a normal `script` tag (canvas ribbons + CSS silk), so they work when you open `index.html` directly — no local server required.
