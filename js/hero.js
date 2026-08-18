@@ -85,13 +85,16 @@ const coreGroup = new THREE.Group();
 scene.add(coreGroup);
 
 const crystal = new THREE.Mesh(
-  new THREE.IcosahedronGeometry(1.15, 1),
-  new THREE.MeshStandardMaterial({
-    color: 0x1a2238,
-    metalness: 0.92,
-    roughness: 0.18,
-    emissive: 0x0c1428,
-    envMapIntensity: 1.4,
+  new THREE.IcosahedronGeometry(1.15, 0),
+  new THREE.MeshPhysicalMaterial({
+    color: 0x9eb4d8,
+    metalness: 0.85,
+    roughness: 0.12,
+    clearcoat: 1,
+    clearcoatRoughness: 0.08,
+    reflectivity: 1,
+    emissive: 0x162033,
+    emissiveIntensity: 0.55,
   })
 );
 coreGroup.add(crystal);
@@ -144,7 +147,8 @@ const halo = new THREE.Mesh(
 halo.rotation.x = Math.PI / 2.4;
 coreGroup.add(halo);
 
-scene.add(new THREE.AmbientLight(0x4a5878, 0.35));
+scene.add(new THREE.AmbientLight(0x4a5878, 0.55));
+scene.add(new THREE.HemisphereLight(0xffe6b0, 0x102038, 1.15));
 
 const keyLight = new THREE.PointLight(0xffd89a, 28, 18, 2);
 keyLight.position.set(4.2, 3.4, 4.8);
