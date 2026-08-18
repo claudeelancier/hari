@@ -1,3 +1,5 @@
 # Panni — Light Hero
 
-Light-theme cinematic hero. Animations run from a normal `script` tag (canvas ribbons + CSS silk), so they work when you open `index.html` directly — no local server required.
+Cinematic light-theme hero matching the 3D silk walkthrough: WebGL cloth, ivory studio light, headline **Panni tha.**
+
+Three.js is vendored in `vendor/three.min.js`, so the animation also runs when you open `index.html` as a file.
