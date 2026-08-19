@@ -2,132 +2,107 @@
   const destinations = [
     {
       src: "./assets/smta-meenakshi.png",
-      name: "MEENAKSHI",
+      name: "Meenakshi",
       tamil: "மீனாட்சி · மதுரை",
-      kicker: "Temple city",
-      lede: "Start at Meenakshi’s gopuram, then the Tamil Nadu temple trail with SMTA escorts — road, rail, flight and cruise since 1985.",
-      fare: 5500,
-      enter: "zoom",
+      lede: "Begin under Meenakshi’s gopuram. SMTA escorts pilgrimage, leisure and world tours by road, rail, flight and cruise — from Madurai since 1985.",
+      fare: "₹5,500",
     },
     {
       src: "./assets/smta-rameshwaram.png",
-      name: "RAMESWARAM",
+      name: "Rameswaram",
       tamil: "ராமேஸ்வரம்",
-      kicker: "Pilgrimage corridor",
-      lede: "Madurai–Rameshwaram from ₹5,500, plus Kanyakumari, Tanjore and Trichy on fixed departures from Madurai.",
-      fare: 5500,
-      enter: "up",
+      lede: "Madurai–Rameshwaram from ₹5,500, then Kanyakumari, Tanjore and Trichy on fixed departures with SMTA’s own team.",
+      fare: "₹5,500",
     },
     {
       src: "./assets/smta-srilanka.png",
-      name: "SRI LANKA",
+      name: "Sri Lanka",
       tamil: "இலங்கை படகு",
-      kicker: "Ferry · 5 days",
-      lede: "Sri Lanka ferry special — last seats. Call 9791848265. Exclusive island holidays also from ₹54,990.",
-      fare: 43000,
-      enter: "swing",
+      lede: "Sri Lanka ferry, 5 days — last seats. Call 9791848265. Exclusive island holidays also from ₹54,990.",
+      fare: "₹43,000",
     },
     {
       src: "./assets/smta-dubai.png",
-      name: "DUBAI",
+      name: "Dubai",
       tamil: "துபாய் · அபுதாபி",
-      kicker: "IATA outbound",
-      lede: "Dubai / Abu Dhabi from ₹79,990, plus Singapore, Malaysia, Egypt and Europe — authorised IATA agent.",
-      fare: 79990,
-      enter: "drop",
+      lede: "IATA outbound: Dubai / Abu Dhabi from ₹79,990, plus Singapore, Malaysia, Egypt and Europe.",
+      fare: "₹79,990",
     },
     {
       src: "./assets/smta-kasi.png",
-      name: "KASI",
+      name: "Kasi",
       tamil: "காசி · அயோத்தி",
-      kicker: "North pilgrimage",
-      lede: "Kasi, Ayodhya, Shirdi, Badrinath–Kedarnath by train and flight. Lakhs of travellers with SMTA.",
-      fare: 24990,
-      enter: "iris",
+      lede: "Kasi, Ayodhya, Shirdi and Char Dham by train and flight. Lakhs of travellers have gone with SMTA.",
+      fare: "₹24,990",
     },
   ];
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const scenesEl = document.getElementById("scenes");
-  const arrivals = document.getElementById("arrivals");
-  const hud = document.getElementById("hud");
-  const title = document.getElementById("title");
-  const kicker = document.getElementById("kicker");
-  const tamil = document.getElementById("tamil");
+  const hero = document.getElementById("hero");
+  const mainStack = document.getElementById("main-stack");
+  const miniStack = document.getElementById("mini-stack");
+  const board = document.getElementById("board");
   const lede = document.getElementById("lede");
+  const nameEl = document.getElementById("name");
+  const tamilEl = document.getElementById("tamil");
   const fareEl = document.getElementById("fare");
-  const num = document.getElementById("num");
+  const codeEl = document.getElementById("code");
 
   let index = 0;
   let timer;
-  let fareValue = destinations[0].fare;
 
   destinations.forEach((item, i) => {
-    const scene = document.createElement("figure");
-    scene.className = `scene${i === 0 ? " is-in" : ""}`;
-    scene.dataset.enter = item.enter;
-    scene.innerHTML = `<img src="${item.src}" alt="${item.name}">`;
-    scenesEl.appendChild(scene);
+    const a = document.createElement("img");
+    const b = document.createElement("img");
+    a.src = item.src;
+    b.src = item.src;
+    a.alt = item.name;
+    b.alt = item.name;
+    if (i === 0) a.className = "is-on";
+    mainStack.appendChild(a);
+    miniStack.appendChild(b);
 
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = i === 0 ? "is-active" : "";
-    btn.innerHTML = `<img src="${item.src}" alt=""><span>${item.name}</span>`;
+    btn.textContent = `${String(i + 1).padStart(2, "0")}  ${item.name}`;
+    if (i === 0) btn.className = "is-on";
     btn.addEventListener("click", () => go(i, true));
-    arrivals.appendChild(btn);
+    board.appendChild(btn);
   });
 
-  const scenes = [...document.querySelectorAll(".scene")];
-  const buttons = [...arrivals.querySelectorAll("button")];
-
-  const replayHud = () => {
-    hud.classList.remove("is-refresh");
-    void hud.offsetWidth;
-    hud.classList.add("is-refresh");
-    hud.querySelectorAll(".in").forEach((el, i) => {
-      el.style.animationDelay = `${0.05 + i * 0.07}s`;
-    });
-  };
-
-  const tickFare = (target) => {
-    const from = fareValue;
-    const start = performance.now();
-    const step = (now) => {
-      const t = Math.min(1, (now - start) / 600);
-      fareValue = Math.round(from + (target - from) * (1 - (1 - t) ** 3));
-      fareEl.textContent = fareValue.toLocaleString("en-IN");
-      if (t < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  };
+  const mains = [...mainStack.querySelectorAll("img")];
+  const minis = [...miniStack.querySelectorAll("img")];
+  const buttons = [...board.querySelectorAll("button")];
+  minis[1].className = "is-on";
 
   const go = (next, user) => {
-    const prev = index;
     index = (next + destinations.length) % destinations.length;
     const item = destinations[index];
-    scenes[prev].classList.remove("is-in");
-    scenes[prev].classList.add("is-out");
-    window.setTimeout(() => scenes[prev].classList.remove("is-out"), 700);
-    const incoming = scenes[index];
-    incoming.classList.remove("is-in");
-    void incoming.offsetWidth;
-    incoming.classList.add("is-in");
-    title.textContent = item.name;
-    kicker.textContent = item.kicker;
-    tamil.textContent = item.tamil;
+    mains.forEach((img, i) => img.classList.toggle("is-on", i === index));
+    minis.forEach((img, i) => img.classList.toggle("is-on", i === (index + 1) % destinations.length));
+    buttons.forEach((btn, i) => btn.classList.toggle("is-on", i === index));
     lede.textContent = item.lede;
-    num.textContent = `${String(index + 1).padStart(2, "0")} / 05 · arriving`;
-    tickFare(item.fare);
-    buttons.forEach((btn, i) => btn.classList.toggle("is-active", i === index));
-    replayHud();
+    nameEl.textContent = item.name;
+    tamilEl.textContent = item.tamil;
+    fareEl.textContent = item.fare;
+    codeEl.textContent = String(index + 1).padStart(2, "0");
     if (user) play();
   };
 
   const play = () => {
     window.clearInterval(timer);
     if (reduced) return;
-    timer = window.setInterval(() => go(index + 1, false), 4800);
+    timer = window.setInterval(() => go(index + 1, false), 5200);
   };
+
+  hero.addEventListener("pointermove", (event) => {
+    const x = event.clientX / window.innerWidth - 0.5;
+    const y = event.clientY / window.innerHeight - 0.5;
+    document.querySelectorAll("[data-depth]").forEach((el) => {
+      const d = Number(el.dataset.depth);
+      el.style.transform = `translate3d(${(-x * d * 80).toFixed(1)}px, ${(-y * d * 60).toFixed(1)}px, 0)`;
+    });
+  });
 
   lede.textContent = destinations[0].lede;
   play();

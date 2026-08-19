@@ -7,20 +7,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/hero.css" />
   </head>
   <body>
     <section class="hero" id="hero">
-      <div class="scenes" id="scenes"></div>
-      <div class="veil" aria-hidden="true"></div>
+      <div class="mesh" aria-hidden="true"></div>
+      <div class="glow glow-a" data-depth="0.15" aria-hidden="true"></div>
+      <div class="glow glow-b" data-depth="0.28" aria-hidden="true"></div>
 
       <header class="nav">
         <a class="brand" href="https://www.srimurugantravel.com/">
           <b>SM</b>
-          <span>Sri Murugan Travels<small>IATA · Since 1985 · Madurai</small></span>
+          <span>Sri Murugan Travels<small>IATA · Madurai · 1985</small></span>
         </a>
         <nav>
           <a href="https://www.srimurugantravel.com/">Tours</a>
@@ -30,20 +31,47 @@
         <a class="call" href="tel:+919791848265">97918 48265</a>
       </header>
 
-      <div class="hud" id="hud">
-        <p class="in in-1 kicker" id="kicker">Temple city</p>
-        <p class="in in-2 num" id="num">01 / 05 · arriving</p>
-        <h1 class="in in-3 title" id="title">MEENAKSHI</h1>
-        <p class="in in-4 tamil" id="tamil">மீனாட்சி · மதுரை</p>
-        <p class="in in-5 lede" id="lede"></p>
-        <p class="in in-6 fare"><span id="fare">5,500</span><small>INR onwards · Ex Madurai</small></p>
-        <div class="in in-7 cta">
-          <a class="cta__main" href="https://www.srimurugantravel.com/">Book this journey</a>
-          <a class="cta__ghost" href="tel:+919791848265">Talk to SMTA</a>
+      <div class="layout">
+        <div class="copy">
+          <p class="eyebrow">Approved tour operator · Govt. of India</p>
+          <h1>
+            <span>Travel that</span>
+            <span class="ital">arrives beautifully</span>
+          </h1>
+          <p class="lede" id="lede"></p>
+          <div class="cta">
+            <a class="btn-main" href="https://www.srimurugantravel.com/">Book this yatra</a>
+            <a class="btn-ghost" href="tel:+919791848265">Call SMTA</a>
+          </div>
+          <ul class="meta">
+            <li><strong>Road</strong> Rail</li>
+            <li><strong>Flight</strong> Cruise</li>
+            <li><strong>Ex Madurai</strong></li>
+          </ul>
+        </div>
+
+        <div class="stage" data-depth="0.08">
+          <svg class="orbit" viewBox="0 0 420 420" aria-hidden="true">
+            <ellipse cx="210" cy="210" rx="196" ry="168" />
+          </svg>
+          <div class="liquid liquid-main" id="main">
+            <div class="liquid__stack" id="main-stack"></div>
+          </div>
+          <div class="liquid liquid-mini" id="mini" data-depth="0.2">
+            <div class="liquid__stack" id="mini-stack"></div>
+          </div>
+          <div class="caption">
+            <span id="code">01</span>
+            <p>
+              <b id="name">Meenakshi</b>
+              <small id="tamil">மீனாட்சி · மதுரை</small>
+            </p>
+            <em id="fare">₹5,500</em>
+          </div>
         </div>
       </div>
 
-      <div class="arrivals" id="arrivals"></div>
+      <div class="board" id="board"></div>
     </section>
     <script src="./js/hero.js"></script>
   </body>
