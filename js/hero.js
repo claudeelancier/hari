@@ -2,90 +2,116 @@
   const destinations = [
     {
       src: "./assets/smta-meenakshi.png",
-      name: "Meenakshi",
+      kicker: "Temple city · Collection 01",
+      title: "Meenakshi",
+      sub: "where every yatra begins",
       tamil: "மீனாட்சி · மதுரை",
-      lede: "Begin under Meenakshi’s gopuram. SMTA escorts pilgrimage, leisure and world tours by road, rail, flight and cruise — from Madurai since 1985.",
-      fare: "₹5,500",
+      lede: "Start under the gopuram. SMTA runs pilgrimage, leisure and world tours by road, rail, flight and cruise from Madurai since 1985.",
+      price: "From ₹5,500",
+      accent: "#ea580c",
+      wash: "#ffe0b8",
+      fx: "sash",
     },
     {
       src: "./assets/smta-rameshwaram.png",
-      name: "Rameswaram",
+      kicker: "Pilgrimage corridor · 02",
+      title: "Rameswaram",
+      sub: "pillars, sea, darshan",
       tamil: "ராமேஸ்வரம்",
-      lede: "Madurai–Rameshwaram from ₹5,500, then Kanyakumari, Tanjore and Trichy on fixed departures with SMTA’s own team.",
-      fare: "₹5,500",
+      lede: "Madurai–Rameshwaram from ₹5,500, plus Kanyakumari, Tanjore and Trichy on fixed departures.",
+      price: "From ₹5,500",
+      accent: "#0f766e",
+      wash: "#d1faf5",
+      fx: "box",
     },
     {
       src: "./assets/smta-srilanka.png",
-      name: "Sri Lanka",
+      kicker: "Ferry · 5 days · 03",
+      title: "Sri Lanka",
+      sub: "last seats on the ship",
       tamil: "இலங்கை படகு",
-      lede: "Sri Lanka ferry, 5 days — last seats. Call 9791848265. Exclusive island holidays also from ₹54,990.",
-      fare: "₹43,000",
+      lede: "Sri Lanka ferry special — call 9791848265. Exclusive island holidays also from ₹54,990.",
+      price: "From ₹43,000",
+      accent: "#0284c7",
+      wash: "#e0f2fe",
+      fx: "rise",
     },
     {
       src: "./assets/smta-dubai.png",
-      name: "Dubai",
+      kicker: "IATA outbound · 04",
+      title: "Dubai",
+      sub: "Abu Dhabi beside it",
       tamil: "துபாய் · அபுதாபி",
-      lede: "IATA outbound: Dubai / Abu Dhabi from ₹79,990, plus Singapore, Malaysia, Egypt and Europe.",
-      fare: "₹79,990",
+      lede: "Dubai / Abu Dhabi from ₹79,990, plus Singapore, Malaysia, Egypt and Europe — authorised IATA agent.",
+      price: "From ₹79,990",
+      accent: "#d97706",
+      wash: "#fef3c7",
+      fx: "fan",
     },
     {
       src: "./assets/smta-kasi.png",
-      name: "Kasi",
+      kicker: "North pilgrimage · 05",
+      title: "Kasi",
+      sub: "Ayodhya on the same path",
       tamil: "காசி · அயோத்தி",
       lede: "Kasi, Ayodhya, Shirdi and Char Dham by train and flight. Lakhs of travellers have gone with SMTA.",
-      fare: "₹24,990",
+      price: "From ₹24,990",
+      accent: "#e11d48",
+      wash: "#ffe4e6",
+      fx: "soft",
     },
   ];
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const hero = document.getElementById("hero");
-  const mainStack = document.getElementById("main-stack");
-  const miniStack = document.getElementById("mini-stack");
-  const board = document.getElementById("board");
-  const lede = document.getElementById("lede");
-  const nameEl = document.getElementById("name");
-  const tamilEl = document.getElementById("tamil");
-  const fareEl = document.getElementById("fare");
-  const codeEl = document.getElementById("code");
-
+  const panelsEl = document.getElementById("panels");
+  const switchEl = document.getElementById("switch");
   let index = 0;
   let timer;
 
   destinations.forEach((item, i) => {
-    const a = document.createElement("img");
-    const b = document.createElement("img");
-    a.src = item.src;
-    b.src = item.src;
-    a.alt = item.name;
-    b.alt = item.name;
-    if (i === 0) a.className = "is-on";
-    mainStack.appendChild(a);
-    miniStack.appendChild(b);
+    const panel = document.createElement("article");
+    panel.className = `panel${i === 0 ? " is-on" : ""}`;
+    panel.dataset.fx = item.fx;
+    panel.style.setProperty("--accent", item.accent);
+    panel.style.setProperty("--wash", item.wash);
+    panel.innerHTML = `
+      <div class="panel__bg"><img src="${item.src}" alt="${item.title}"></div>
+      <div class="panel__wash"></div>
+      <div class="panel__copy">
+        <p class="kicker">${item.kicker}</p>
+        <h1>${item.title}<em>${item.sub}</em></h1>
+        <p class="tamil">${item.tamil}</p>
+        <p class="lede">${item.lede}</p>
+        <div class="row">
+          <a class="btn" href="https://www.srimurugantravel.com/">Book this journey</a>
+          <a class="ghost" href="tel:+919791848265">Talk to SMTA</a>
+          <span class="price">${item.price}</span>
+        </div>
+      </div>`;
+    panelsEl.appendChild(panel);
 
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.textContent = `${String(i + 1).padStart(2, "0")}  ${item.name}`;
+    btn.textContent = item.title;
     if (i === 0) btn.className = "is-on";
     btn.addEventListener("click", () => go(i, true));
-    board.appendChild(btn);
+    switchEl.appendChild(btn);
   });
 
-  const mains = [...mainStack.querySelectorAll("img")];
-  const minis = [...miniStack.querySelectorAll("img")];
-  const buttons = [...board.querySelectorAll("button")];
-  minis[1].className = "is-on";
+  const panels = [...document.querySelectorAll(".panel")];
+  const buttons = [...switchEl.querySelectorAll("button")];
 
   const go = (next, user) => {
+    const prev = index;
     index = (next + destinations.length) % destinations.length;
-    const item = destinations[index];
-    mains.forEach((img, i) => img.classList.toggle("is-on", i === index));
-    minis.forEach((img, i) => img.classList.toggle("is-on", i === (index + 1) % destinations.length));
+    panels[prev].classList.remove("is-on");
+    panels[prev].classList.add("is-leave");
+    window.setTimeout(() => panels[prev].classList.remove("is-leave"), 850);
+    const incoming = panels[index];
+    incoming.classList.remove("is-on");
+    void incoming.offsetWidth;
+    incoming.classList.add("is-on");
     buttons.forEach((btn, i) => btn.classList.toggle("is-on", i === index));
-    lede.textContent = item.lede;
-    nameEl.textContent = item.name;
-    tamilEl.textContent = item.tamil;
-    fareEl.textContent = item.fare;
-    codeEl.textContent = String(index + 1).padStart(2, "0");
     if (user) play();
   };
 
@@ -95,15 +121,5 @@
     timer = window.setInterval(() => go(index + 1, false), 5200);
   };
 
-  hero.addEventListener("pointermove", (event) => {
-    const x = event.clientX / window.innerWidth - 0.5;
-    const y = event.clientY / window.innerHeight - 0.5;
-    document.querySelectorAll("[data-depth]").forEach((el) => {
-      const d = Number(el.dataset.depth);
-      el.style.transform = `translate3d(${(-x * d * 80).toFixed(1)}px, ${(-y * d * 60).toFixed(1)}px, 0)`;
-    });
-  });
-
-  lede.textContent = destinations[0].lede;
   play();
 })();
