@@ -13,22 +13,21 @@
     <link rel="stylesheet" href="./css/hero.css" />
   </head>
   <body>
-    <div class="cursor" id="cursor" aria-hidden="true">
-      <svg viewBox="0 0 48 48">
-        <circle cx="24" cy="24" r="18" />
-        <path d="M24 8v6M24 34v6M8 24h6M34 24h6M24 24l8-10" />
-      </svg>
-    </div>
+    <div class="trail" id="trail" aria-hidden="true"></div>
 
     <section class="hero is-booting" id="hero">
-      <div class="boot" id="boot" aria-hidden="true">
-        <span class="boot__ring"></span>
-        <span class="boot__ring"></span>
-        <span class="boot__mark">SM</span>
-        <small>Sri Murugan Travels · Madurai</small>
+      <div class="boot" aria-hidden="true">
+        <i class="fold fold--tl"></i>
+        <i class="fold fold--tr"></i>
+        <i class="fold fold--bl"></i>
+        <i class="fold fold--br"></i>
+        <div class="boot__core">
+          <b>SM</b>
+          <small>Unfolding your next yatra</small>
+        </div>
       </div>
 
-      <div class="reel" id="reel"></div>
+      <div class="mosaic" id="mosaic"></div>
       <div class="veil" aria-hidden="true"></div>
 
       <header class="nav">
@@ -45,36 +44,23 @@
       </header>
 
       <div class="hud">
-        <div class="meter">
-          <svg class="meter__ring" viewBox="0 0 100 100" aria-hidden="true">
-            <circle cx="50" cy="50" r="44"></circle>
-            <circle class="meter__run" cx="50" cy="50" r="44"></circle>
-          </svg>
-          <div class="odometer" id="odometer"><span>0</span><span>1</span></div>
+        <p class="kicker" id="kicker"></p>
+        <div class="slot" aria-live="polite">
+          <div class="slot__window">
+            <div class="slot__reel" id="slot"></div>
+          </div>
         </div>
-
-        <p class="kicker" id="kicker">Temple city</p>
-        <h1 class="title" id="title">MEENAKSHI</h1>
         <p class="tamil" id="tamil">மீனாட்சி · மதுரை</p>
         <p class="lede" id="lede"></p>
-        <p class="fare"><span id="fare">5500</span><small>INR onwards · Ex Madurai</small></p>
+        <p class="fare"><span id="fare">5,500</span><small>INR onwards · Ex Madurai</small></p>
         <div class="cta">
-          <a class="cta__main" href="https://www.srimurugantravel.com/" data-ripple>Book this journey</a>
+          <a class="cta__main" href="https://www.srimurugantravel.com/">Book this journey</a>
           <a class="cta__ghost" href="tel:+919791848265">Talk to SMTA</a>
         </div>
-
-        <svg class="route" viewBox="0 0 420 86" fill="none" aria-hidden="true">
-          <path class="route__line" d="M18 68 C90 68 110 18 180 22 C250 26 270 70 340 52 C380 42 400 28 404 20" />
-          <circle class="route__dot" cx="18" cy="68" r="7" />
-          <circle class="route__head" cx="404" cy="20" r="8" />
-          <text x="8" y="84">Madurai</text>
-          <text id="route-end" x="330" y="14">Meenakshi</text>
-        </svg>
+        <div class="bars" id="bars"></div>
       </div>
 
-      <aside class="index" id="index"></aside>
-
-      <div class="coverflow" id="coverflow"></div>
+      <div class="polaroids" id="polaroids"></div>
     </section>
 
     <script src="./js/hero.js"></script>
