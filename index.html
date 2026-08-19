@@ -13,22 +13,17 @@
     <link rel="stylesheet" href="./css/hero.css" />
   </head>
   <body>
-    <div class="trail" id="trail" aria-hidden="true"></div>
+    <svg class="fx" aria-hidden="true">
+      <filter id="ripple" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" result="n" />
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="0" />
+      </filter>
+    </svg>
 
-    <section class="hero is-booting" id="hero">
-      <div class="boot" aria-hidden="true">
-        <i class="fold fold--tl"></i>
-        <i class="fold fold--tr"></i>
-        <i class="fold fold--bl"></i>
-        <i class="fold fold--br"></i>
-        <div class="boot__core">
-          <b>SM</b>
-          <small>Unfolding your next yatra</small>
-        </div>
-      </div>
-
-      <div class="mosaic" id="mosaic"></div>
+    <section class="hero" id="hero">
+      <div class="worlds" id="worlds"></div>
       <div class="veil" aria-hidden="true"></div>
+      <div class="beam" aria-hidden="true"></div>
 
       <header class="nav">
         <a class="brand" href="https://www.srimurugantravel.com/">
@@ -44,12 +39,9 @@
       </header>
 
       <div class="hud">
-        <p class="kicker" id="kicker"></p>
-        <div class="slot" aria-live="polite">
-          <div class="slot__window">
-            <div class="slot__reel" id="slot"></div>
-          </div>
-        </div>
+        <p class="kicker" id="kicker">Temple city</p>
+        <p class="num" id="num">01</p>
+        <h1 class="mask" id="mask">MEENAKSHI</h1>
         <p class="tamil" id="tamil">மீனாட்சி · மதுரை</p>
         <p class="lede" id="lede"></p>
         <p class="fare"><span id="fare">5,500</span><small>INR onwards · Ex Madurai</small></p>
@@ -57,10 +49,9 @@
           <a class="cta__main" href="https://www.srimurugantravel.com/">Book this journey</a>
           <a class="cta__ghost" href="tel:+919791848265">Talk to SMTA</a>
         </div>
-        <div class="bars" id="bars"></div>
       </div>
 
-      <div class="polaroids" id="polaroids"></div>
+      <div class="pills" id="pills"></div>
     </section>
 
     <script src="./js/hero.js"></script>

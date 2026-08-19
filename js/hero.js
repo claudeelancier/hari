@@ -43,95 +43,57 @@
   ];
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const cols = window.matchMedia("(max-width: 960px)").matches ? 4 : 6;
-  const rows = window.matchMedia("(max-width: 960px)").matches ? 5 : 4;
-  const hero = document.getElementById("hero");
-  const mosaic = document.getElementById("mosaic");
-  const slot = document.getElementById("slot");
-  const bars = document.getElementById("bars");
-  const polaroids = document.getElementById("polaroids");
-  const trail = document.getElementById("trail");
-  const kickerEl = document.getElementById("kicker");
-  const tamilEl = document.getElementById("tamil");
-  const ledeEl = document.getElementById("lede");
+  const worlds = document.getElementById("worlds");
+  const pills = document.getElementById("pills");
+  const mask = document.getElementById("mask");
+  const kicker = document.getElementById("kicker");
+  const tamil = document.getElementById("tamil");
+  const lede = document.getElementById("lede");
   const fareEl = document.getElementById("fare");
+  const num = document.getElementById("num");
+  const disp = document.querySelector("#ripple feDisplacementMap");
+  const turb = document.querySelector("#ripple feTurbulence");
 
   let index = 0;
   let timer;
   let fareValue = destinations[0].fare;
-  let typeTimer;
-
-  destinations.forEach((item) => {
-    const span = document.createElement("span");
-    span.textContent = item.name;
-    slot.appendChild(span);
-  });
 
   destinations.forEach((item, i) => {
+    const fig = document.createElement("figure");
+    fig.className = `world${i === 0 ? " is-on" : ""}`;
+    fig.innerHTML = `<img src="${item.src}" alt="${item.name}">`;
+    worlds.appendChild(fig);
+
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.innerHTML = `<span>0${i + 1}</span><i><em></em></i><b>${item.name}</b>`;
+    btn.textContent = item.name;
     if (i === 0) btn.className = "is-active";
     btn.addEventListener("click", () => go(i, true));
-    bars.appendChild(btn);
-
-    const card = document.createElement("article");
-    card.className = "card";
-    card.innerHTML = `<img src="${item.src}" alt="${item.name}"><b>${item.name}</b>`;
-    polaroids.appendChild(card);
+    pills.appendChild(btn);
   });
 
-  for (let r = 0; r < rows; r += 1) {
-    for (let c = 0; c < cols; c += 1) {
-      const tile = document.createElement("div");
-      tile.className = "tile";
-      tile.style.transitionDelay = `${(c + r) * 55}ms`;
-      const a = document.createElement("div");
-      const b = document.createElement("div");
-      a.className = "tile__face tile__a";
-      b.className = "tile__face tile__b";
-      const pos = `${(c / (cols - 1)) * 100}% ${(r / (rows - 1)) * 100}%`;
-      [a, b].forEach((face) => {
-        face.style.backgroundPosition = pos;
-        face.style.backgroundSize = `${cols * 100}% ${rows * 100}%`;
-      });
-      a.style.backgroundImage = `url("${destinations[0].src}")`;
-      b.style.backgroundImage = `url("${destinations[1].src}")`;
-      tile.append(a, b);
-      mosaic.appendChild(tile);
-    }
-  }
+  const slides = [...document.querySelectorAll(".world")];
+  const buttons = [...pills.querySelectorAll("button")];
 
-  const tiles = [...document.querySelectorAll(".tile")];
-  const cards = [...document.querySelectorAll(".card")];
-  const barBtns = [...bars.querySelectorAll("button")];
-
-  const paint = (faceSel, src) => {
-    tiles.forEach((tile) => {
-      tile.querySelector(faceSel).style.backgroundImage = `url("${src}")`;
-    });
-  };
-
-  const typeKicker = (text) => {
-    window.clearInterval(typeTimer);
-    kickerEl.classList.add("is-type");
-    kickerEl.textContent = "";
-    let i = 0;
-    typeTimer = window.setInterval(() => {
-      kickerEl.textContent = text.slice(0, i + 1);
-      i += 1;
-      if (i >= text.length) {
-        window.clearInterval(typeTimer);
-        kickerEl.classList.remove("is-type");
-      }
-    }, 38);
+  const ripple = () => {
+    if (!disp || reduced) return;
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / 900);
+      const wave = Math.sin(t * Math.PI);
+      disp.setAttribute("scale", String(38 * wave));
+      turb.setAttribute("baseFrequency", String(0.01 + 0.05 * wave));
+      if (t < 1) requestAnimationFrame(tick);
+      else disp.setAttribute("scale", "0");
+    };
+    requestAnimationFrame(tick);
   };
 
   const tickFare = (target) => {
     const from = fareValue;
     const start = performance.now();
     const step = (now) => {
-      const t = Math.min(1, (now - start) / 650);
+      const t = Math.min(1, (now - start) / 620);
       fareValue = Math.round(from + (target - from) * (1 - (1 - t) ** 3));
       fareEl.textContent = fareValue.toLocaleString("en-IN");
       if (t < 1) requestAnimationFrame(step);
@@ -139,44 +101,30 @@
     requestAnimationFrame(step);
   };
 
-  const stackCards = () => {
-    cards.forEach((card, i) => {
-      const d = (i - index + cards.length) % cards.length;
-      card.classList.toggle("is-out", false);
-      if (d === cards.length - 1 && cards.length > 2) {
-        card.style.transform = "translate(9rem, -7rem) rotate(16deg)";
-        card.style.opacity = "0";
-        card.style.zIndex = "0";
-        return;
-      }
-      const rot = (d - 1) * 7;
-      const x = d * 10;
-      const y = d * -12;
-      card.style.zIndex = String(10 - d);
-      card.style.opacity = d > 2 ? "0" : "1";
-      card.style.transform = `translate(${x}px, ${y}px) rotate(${rot}deg)`;
-    });
-  };
-
   const go = (next, user) => {
-    const from = index;
+    slides[index].classList.add("is-leave");
     index = (next + destinations.length) % destinations.length;
     const item = destinations[index];
-    const hidden = tiles[0].classList.contains("is-flip") ? ".tile__a" : ".tile__b";
-    paint(hidden, item.src);
-    tiles.forEach((tile) => tile.classList.toggle("is-flip"));
-    slot.style.transform = `translateY(${-index * 0.92}em)`;
-    barBtns.forEach((btn, i) => btn.classList.toggle("is-active", i === index));
-    typeKicker(item.kicker);
-    tamilEl.textContent = item.tamil;
-    ledeEl.textContent = item.lede;
-    tickFare(item.fare);
-    const flying = cards[from];
-    flying.classList.add("is-out");
+    worlds.style.transform = `translate3d(${-index * 20}%, 0, 0)`;
+    ripple();
+    mask.classList.add("is-swap");
     window.setTimeout(() => {
-      flying.classList.remove("is-out");
-      stackCards();
-    }, 500);
+      mask.textContent = item.name;
+      mask.style.setProperty("--shot", `url("${item.src}")`);
+      mask.classList.remove("is-swap");
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("is-on", i === index);
+        slide.classList.remove("is-leave");
+      });
+    }, 280);
+    kicker.textContent = item.kicker;
+    tamil.textContent = item.tamil;
+    lede.textContent = item.lede;
+    num.textContent = String(index + 1).padStart(2, "0");
+    tickFare(item.fare);
+    buttons.forEach((btn, i) => btn.classList.toggle("is-active", i === index));
+    const bar = document.querySelector(".beam");
+    bar.replaceWith(bar.cloneNode(true));
     if (user) play();
   };
 
@@ -186,20 +134,7 @@
     timer = window.setInterval(() => go(index + 1, false), 5000);
   };
 
-  window.addEventListener("pointermove", (event) => {
-    const dot = document.createElement("span");
-    dot.style.left = `${event.clientX}px`;
-    dot.style.top = `${event.clientY}px`;
-    trail.appendChild(dot);
-    window.setTimeout(() => dot.remove(), 700);
-  });
-
-  typeKicker(destinations[0].kicker);
-  ledeEl.textContent = destinations[0].lede;
-  stackCards();
-
-  window.setTimeout(() => {
-    hero.classList.remove("is-booting");
-    play();
-  }, reduced ? 0 : 1200);
+  mask.style.setProperty("--shot", `url("${destinations[0].src}")`);
+  lede.textContent = destinations[0].lede;
+  play();
 })();
