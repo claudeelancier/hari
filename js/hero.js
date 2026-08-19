@@ -192,13 +192,6 @@
     dot.style.top = `${event.clientY}px`;
     trail.appendChild(dot);
     window.setTimeout(() => dot.remove(), 700);
-    const mx = (event.clientX / window.innerWidth - 0.5) * 8;
-    const my = (event.clientY / window.innerHeight - 0.5) * 8;
-    tiles.forEach((tile) => {
-      const face = tile.querySelector(tile.classList.contains("is-flip") ? ".tile__b" : ".tile__a");
-      const pos = face.style.backgroundPosition.split(" ");
-      face.style.backgroundPosition = `calc(${pos[0]} + ${mx}px) calc(${pos[1] || "50%"} + ${my}px)`;
-    });
   });
 
   typeKicker(destinations[0].kicker);
