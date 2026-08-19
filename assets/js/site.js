@@ -37,7 +37,7 @@
     var mount = document.getElementById("site-header");
     if (!mount) return;
     var isHome = currentFile() === "index.html";
-    mount.className = "site-header" + (isHome ? "" : " inner-solid is-solid");
+    mount.className = "site-header" + (isHome ? " home-light" : " inner-solid is-solid");
     mount.innerHTML =
       '<div class="header-inner">' +
         '<a class="logo" href="index.html" aria-label="Srimurugan Travel home">' +
@@ -121,95 +121,48 @@
     });
   }
 
-  function heroSlider() {
-    var root = document.querySelector("[data-hero]");
-    if (!root || !window.SMT) return;
-    var slides = SMT.heroSlides;
-    var stage = root.querySelector(".hero-slides");
-    var copyLabel = root.querySelector("[data-hero-label]");
-    var copyTitle = root.querySelector("[data-hero-title]");
-    var copySub = root.querySelector("[data-hero-sub]");
-    var copyCta = root.querySelector("[data-hero-cta]");
-    var dotsWrap = root.querySelector(".hero-dots");
-    var i = 0;
-    var timer;
-    var interval = 5000;
+  function cinematicHero() {
+    var root = document.querySelector("[data-cinematic-hero]");
+    if (!root) return;
 
-    slides.forEach(function (s, idx) {
-      var d = document.createElement("div");
-      d.className = "hero-slide" + (idx === 0 ? " is-active" : "");
-      d.setAttribute("data-index", String(idx));
-      var img = document.createElement("img");
-      img.src = s.image;
-      img.alt = s.title + " — " + s.subtitle;
-      img.decoding = "async";
-      if (idx === 0) img.setAttribute("fetchpriority", "high");
-      else img.loading = "lazy";
-      d.appendChild(img);
-      stage.appendChild(d);
-      var b = document.createElement("button");
-      b.type = "button";
-      b.setAttribute("aria-label", "Show slide " + (idx + 1) + ": " + s.title);
-      if (idx === 0) b.className = "is-active";
-      b.addEventListener("click", function () { go(idx, true); });
-      dotsWrap.appendChild(b);
-    });
+    root.classList.add("is-ready");
 
-    function preload(n) {
-      var s = slides[n];
-      if (!s) return;
-      var im = new Image();
-      im.src = s.image;
+    var stage = root.querySelector("[data-hero-parallax]");
+    var desktop = window.matchMedia("(pointer: fine) and (min-width: 1025px)");
+    if (!stage || reduce || !desktop.matches) return;
+
+    var tx = 0;
+    var ty = 0;
+    var cx = 0;
+    var cy = 0;
+    var raf = 0;
+
+    function tick() {
+      cx += (tx - cx) * 0.08;
+      cy += (ty - cy) * 0.08;
+      stage.style.transform = "translate3d(" + cx.toFixed(2) + "px," + cy.toFixed(2) + "px,0)";
+      if (Math.abs(tx - cx) > 0.04 || Math.abs(ty - cy) > 0.04) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        raf = 0;
+      }
     }
 
-    function setCopy(s) {
-      copyLabel.textContent = s.label;
-      copyTitle.textContent = s.title;
-      copySub.textContent = s.subtitle;
-      copyCta.textContent = s.cta;
-      copyCta.href = s.href;
+    function onMove(e) {
+      var box = root.getBoundingClientRect();
+      tx = ((e.clientX - box.left) / box.width - 0.5) * 14;
+      ty = ((e.clientY - box.top) / box.height - 0.5) * 10;
+      if (!raf) raf = requestAnimationFrame(tick);
     }
 
-    function go(n, user) {
-      var nodes = stage.querySelectorAll(".hero-slide");
-      var dots = dotsWrap.querySelectorAll("button");
-      nodes[i].classList.remove("is-active");
-      dots[i].classList.remove("is-active");
-      i = (n + slides.length) % slides.length;
-      nodes[i].classList.add("is-active");
-      dots[i].classList.add("is-active");
-      setCopy(slides[i]);
-      preload((i + 1) % slides.length);
-      if (user) restart();
+    function onLeave() {
+      tx = 0;
+      ty = 0;
+      if (!raf) raf = requestAnimationFrame(tick);
     }
 
-    function restart() {
-      clearInterval(timer);
-      if (!reduce) timer = setInterval(function () { go(i + 1); }, interval);
-    }
-
-    setCopy(slides[0]);
-    preload(1);
-    if (!reduce) timer = setInterval(function () { go(i + 1); }, interval);
-
-    root.querySelector("[data-hero-prev]").addEventListener("click", function () { go(i - 1, true); });
-    root.querySelector("[data-hero-next]").addEventListener("click", function () { go(i + 1, true); });
-
-    root.addEventListener("mouseenter", function () { clearInterval(timer); });
-    root.addEventListener("mouseleave", restart);
-
-    document.addEventListener("keydown", function (e) {
-      if (!root.contains(document.activeElement) && document.activeElement !== document.body) return;
-      if (e.key === "ArrowLeft") go(i - 1, true);
-      if (e.key === "ArrowRight") go(i + 1, true);
-    });
-
-    var sx = 0;
-    root.addEventListener("touchstart", function (e) { sx = e.changedTouches[0].clientX; }, { passive: true });
-    root.addEventListener("touchend", function (e) {
-      var dx = e.changedTouches[0].clientX - sx;
-      if (Math.abs(dx) > 40) go(dx < 0 ? i + 1 : i - 1, true);
-    });
+    root.addEventListener("mousemove", onMove);
+    root.addEventListener("mouseleave", onLeave);
   }
 
   function card(item, badge) {
@@ -349,7 +302,7 @@
     renderFooter();
     headerScroll();
     mobileNav();
-    heroSlider();
+    cinematicHero();
     if (window.SMT) {
       fillTrack("[data-intl-track]", SMT.internationalTours, "International");
       fillTrack("[data-dom-track]", SMT.domesticTours, "Domestic");

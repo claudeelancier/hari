@@ -44,61 +44,93 @@ PAGES["index.html"] = dict(
     title="Srimurugan Travel | Premium Tours from Madurai since 1985",
     description="Sri Murugan Travel Agency — IATA authorised tours from Madurai. International, domestic, pilgrimage, honeymoon and custom holidays by road, rail, flight and cruise.",
     canonical="https://www.srimurugantravel.com/",
-    extra_head='<link rel="preload" as="image" href="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1920&q=80">',
+    extra_head='<link rel="preload" as="image" type="image/webp" href="assets/images/hero/kerala-alappuzha-backwaters-1920.webp" imagesrcset="assets/images/hero/kerala-alappuzha-backwaters-1280.webp 1280w, assets/images/hero/kerala-alappuzha-backwaters-1920.webp 1920w" imagesizes="(max-width: 768px) 100vw, 54vw">',
     body="""
-<section class="hero" data-hero aria-roledescription="carousel" aria-label="Featured destinations">
-  <div class="hero-slides"></div>
-  <div class="hero-overlay" aria-hidden="true"></div>
-  <div class="hero-copy">
-    <p class="eyebrow" data-hero-label>Travel beyond ordinary</p>
-    <h1 data-hero-title>Discover Beautiful Destinations</h1>
-    <p class="hero-sub" data-hero-sub>Create memories that last forever with Srimurugan Travel — crafted journeys since 1985.</p>
-    <div class="hero-actions">
-      <a class="btn btn-gold" data-hero-cta href="packages.html">Explore packages</a>
-      <a class="btn btn-ghost" href="contact.html">Contact us</a>
+<section class="hero is-ready" data-cinematic-hero aria-label="Sri Murugan Travel introduction">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-orb" aria-hidden="true"></div>
+  <div class="hero-shell">
+    <div class="hero-copy">
+      <p class="hero-kicker">
+        <span>Explore</span>
+        <span aria-hidden="true">•</span>
+        <span>Experience</span>
+        <span aria-hidden="true">•</span>
+        <span>Remember</span>
+      </p>
+      <h1 class="hero-title">
+        <span class="hero-word">Your</span>
+        <span class="hero-word">Dream</span>
+        <span class="hero-word">Journey</span>
+        <span class="hero-word hero-word--accent">Starts</span>
+        <span class="hero-word hero-word--accent">Here</span>
+      </h1>
+      <p class="hero-sub">Discover unforgettable destinations, carefully planned holidays and seamless travel experiences with Sri Murugan Travel.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold hero-btn" href="packages.html">
+          Explore Tour Packages
+          <svg class="hero-btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn hero-btn hero-btn--secondary" href="enquire.html">
+          Plan Your Trip
+          <svg class="hero-btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <ul class="hero-trust">
+        <li>Customised Tour Packages</li>
+        <li>Trusted Travel Assistance</li>
+        <li>24/7 Customer Support</li>
+      </ul>
+    </div>
+    <div class="hero-visual" data-hero-parallax>
+      <div class="hero-frame">
+        <div class="hero-zoom">
+          <picture>
+            <source type="image/webp" srcset="assets/images/hero/kerala-alappuzha-backwaters-1280.webp 1280w, assets/images/hero/kerala-alappuzha-backwaters-1920.webp 1920w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 58vw, 720px">
+            <img
+              src="assets/images/hero/kerala-alappuzha-backwaters-1920.jpg"
+              srcset="assets/images/hero/kerala-alappuzha-backwaters-1280.jpg 1280w, assets/images/hero/kerala-alappuzha-backwaters-1920.jpg 1920w"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 58vw, 720px"
+              width="1920"
+              height="1282"
+              alt="Houseboat cruising the palm-lined Alappuzha backwaters in Kerala"
+              fetchpriority="high"
+              decoding="async">
+          </picture>
+        </div>
+        <svg class="hero-route" viewBox="0 0 400 280" fill="none" aria-hidden="true">
+          <path class="hero-route__line" d="M36 228C88 214 112 146 172 132C232 118 248 176 318 92" stroke="url(#heroRoute)" stroke-width="1.7" stroke-dasharray="6 8" stroke-linecap="round"/>
+          <circle cx="318" cy="92" r="7" fill="#fff"/>
+          <circle class="hero-route__pin" cx="318" cy="92" r="3.4" fill="#d4af37"/>
+          <defs>
+            <linearGradient id="heroRoute" x1="36" y1="228" x2="318" y2="92">
+              <stop stop-color="#ffffff" stop-opacity="0"/>
+              <stop offset="0.35" stop-color="#ffffff" stop-opacity="0.95"/>
+              <stop offset="1" stop-color="#d4af37"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <a class="hero-card" href="domestic.html#kerala">
+          <span class="hero-card__label">Popular Destination</span>
+          <strong>Kerala Backwaters</strong>
+          <span class="hero-card__place">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.2 7-11.2A7 7 0 1 0 5 9.8C5 14.8 12 21 12 21Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9.5" r="2.2" stroke="currentColor" stroke-width="1.8"/></svg>
+            Alappuzha, India
+          </span>
+          <span class="hero-card__action">View Package</span>
+        </a>
+      </div>
     </div>
   </div>
-  <div class="hero-controls">
-    <button class="hero-nav-btn" type="button" data-hero-prev aria-label="Previous destination">‹</button>
-    <button class="hero-nav-btn" type="button" data-hero-next aria-label="Next destination">›</button>
+  <a class="hero-scroll" href="#about-section" aria-label="Scroll to about Sri Murugan Travel">
+    <span>Scroll</span>
+    <span class="hero-scroll__mouse" aria-hidden="true"><i></i></span>
+  </a>
+  <div class="hero-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
+      <path fill="#fbfaf7" d="M0,48 C240,90 480,8 720,32 C960,56 1200,84 1440,28 L1440,90 L0,90 Z"/>
+    </svg>
   </div>
-  <div class="hero-dots" role="tablist" aria-label="Hero slides"></div>
-  <form class="hero-search" action="enquire.html" method="get" aria-label="Travel enquiry">
-    <div class="field">
-      <label for="q-dest">Destination</label>
-      <input id="q-dest" name="destination" required placeholder="Maldives, Kashmir, Europe…">
-    </div>
-    <div class="field">
-      <label for="q-date">Travel date</label>
-      <input id="q-date" name="date" type="date">
-    </div>
-    <div class="field">
-      <label for="q-pax">Travellers</label>
-      <input id="q-pax" name="travellers" type="number" min="1" value="2">
-    </div>
-    <div class="field">
-      <label for="q-type">Tour type</label>
-      <select id="q-type" name="type">
-        <option>Leisure</option>
-        <option>Pilgrimage</option>
-        <option>Honeymoon</option>
-        <option>Family</option>
-        <option>Education</option>
-        <option>Custom</option>
-      </select>
-    </div>
-    <div class="field">
-      <label for="q-budget">Budget</label>
-      <select id="q-budget" name="budget">
-        <option>Flexible</option>
-        <option>Under ₹25,000</option>
-        <option>₹25,000 – ₹75,000</option>
-        <option>₹75,000 – ₹1,50,000</option>
-        <option>Above ₹1,50,000</option>
-      </select>
-    </div>
-    <button class="btn btn-gold" type="submit">Enquire</button>
-  </form>
 </section>
 
 <section class="section" id="about-section">
