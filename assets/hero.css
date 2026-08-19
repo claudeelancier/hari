@@ -531,6 +531,7 @@ body {
   .stats b { font-size: 30px; }
   .hero__content { padding-top: 11vh; }
 }
+@media (max-width: 980px) {
   .nav__links { display: none; }
   .orbit { display: none; }
   .book { grid-template-columns: 1fr 1fr; bottom: 58px; }
