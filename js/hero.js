@@ -6,14 +6,14 @@
   const ring = document.querySelector(".cursor__ring");
   const dot = document.querySelector(".cursor__dot");
   const tiltEl = document.querySelector("[data-tilt]");
+  const media = document.querySelector("[data-parallax]");
   const words = document.querySelectorAll(".hero__word");
 
   words.forEach((word) => {
     word.style.setProperty("--d", word.dataset.delay || "0");
   });
 
-  const magnetic = document.querySelectorAll("[data-magnetic]");
-  magnetic.forEach((el) => {
+  document.querySelectorAll("[data-magnetic]").forEach((el) => {
     el.addEventListener("mousemove", (event) => {
       const rect = el.getBoundingClientRect();
       const x = event.clientX - rect.left - rect.width / 2;
@@ -25,34 +25,34 @@
     });
   });
 
-  let pointerX = window.innerWidth * 0.7;
-  let pointerY = window.innerHeight * 0.4;
+  let pointerX = window.innerWidth * 0.62;
+  let pointerY = window.innerHeight * 0.42;
   let ringX = pointerX;
   let ringY = pointerY;
-
-  const moveSpotlight = () => {
-    spotlight.style.left = `${pointerX}px`;
-    spotlight.style.top = `${pointerY}px`;
-  };
 
   window.addEventListener("pointermove", (event) => {
     pointerX = event.clientX;
     pointerY = event.clientY;
-    moveSpotlight();
+    spotlight.style.left = `${pointerX}px`;
+    spotlight.style.top = `${pointerY}px`;
+
+    const mx = (event.clientX / window.innerWidth - 0.5) * 18;
+    const my = (event.clientY / window.innerHeight - 0.5) * 12;
+    if (media) media.style.transform = `translate3d(${mx}px, ${my}px, 0)`;
 
     if (tiltEl) {
       const rect = tiltEl.getBoundingClientRect();
       const px = (event.clientX - rect.left) / rect.width - 0.5;
       const py = (event.clientY - rect.top) / rect.height - 0.5;
-      tiltEl.style.transform = `rotateX(${(-py * 8).toFixed(2)}deg) rotateY(${(px * 10).toFixed(2)}deg)`;
+      tiltEl.style.transform = `rotateX(${(-py * 7).toFixed(2)}deg) rotateY(${(px * 9).toFixed(2)}deg)`;
     }
 
-    const target = event.target.closest("a, button");
-    cursor.classList.toggle("is-hover", Boolean(target));
+    cursor.classList.toggle("is-hover", Boolean(event.target.closest("a, button")));
   });
 
   hero.addEventListener("pointerleave", () => {
     if (tiltEl) tiltEl.style.transform = "rotateX(0deg) rotateY(0deg)";
+    if (media) media.style.transform = "translate3d(0, 0, 0)";
   });
 
   const animateCursor = () => {
@@ -67,7 +67,6 @@
 
   const ctx = canvas.getContext("2d");
   const particles = [];
-  const count = 70;
 
   const resize = () => {
     canvas.width = hero.clientWidth;
@@ -82,10 +81,10 @@
     reset(initial) {
       this.x = Math.random() * canvas.width;
       this.y = initial ? Math.random() * canvas.height : canvas.height + 8;
-      this.size = Math.random() * 1.6 + 0.3;
-      this.speed = Math.random() * 0.35 + 0.08;
-      this.drift = (Math.random() - 0.5) * 0.25;
-      this.alpha = Math.random() * 0.45 + 0.15;
+      this.size = Math.random() * 1.7 + 0.3;
+      this.speed = Math.random() * 0.38 + 0.08;
+      this.drift = (Math.random() - 0.5) * 0.28;
+      this.alpha = Math.random() * 0.5 + 0.12;
     }
 
     update() {
@@ -104,6 +103,7 @@
 
   const initParticles = () => {
     particles.length = 0;
+    const count = Math.min(90, Math.floor((canvas.width * canvas.height) / 18000));
     for (let i = 0; i < count; i += 1) particles.push(new Particle());
   };
 

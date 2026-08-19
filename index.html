@@ -19,23 +19,29 @@
     </div>
 
     <section class="hero" id="hero">
+      <div class="hero__media" data-parallax>
+        <img
+          class="hero__bg"
+          src="./assets/hero-palace.png"
+          alt="Grand marble salon of Maison Hari"
+        />
+      </div>
+      <div class="hero__scrim" aria-hidden="true"></div>
       <canvas class="hero__particles" id="particles" aria-hidden="true"></canvas>
       <div class="hero__noise" aria-hidden="true"></div>
-      <div class="hero__vignette" aria-hidden="true"></div>
       <div class="hero__spotlight" id="spotlight" aria-hidden="true"></div>
-      <div class="hero__orb hero__orb--one" aria-hidden="true"></div>
-      <div class="hero__orb hero__orb--two" aria-hidden="true"></div>
-      <div class="hero__orb hero__orb--three" aria-hidden="true"></div>
 
       <header class="hero__nav">
         <a class="hero__mark" href="#hero">
           <span class="hero__crest">H</span>
           <span class="hero__brand">Maison Hari</span>
         </a>
-        <p class="hero__est">Est. MCMXCIV · Paris</p>
-        <a class="hero__reserve" href="#hero" data-magnetic>
-          <span>Private Viewing</span>
-        </a>
+        <nav class="hero__links" aria-label="Hero">
+          <a href="#hero">Atelier</a>
+          <a href="#hero">Collection</a>
+          <a href="#hero">Salons</a>
+        </nav>
+        <a class="hero__reserve" href="#hero" data-magnetic>Private Viewing</a>
       </header>
 
       <div class="hero__stage">
@@ -44,22 +50,16 @@
             <span class="hero__eyebrow-line"></span>
             Haute Atelier · Collection XXVI
           </p>
-
           <h1 class="hero__title">
-            <span class="hero__line">
-              <span class="hero__word" data-delay="0">The art of</span>
-            </span>
+            <span class="hero__line"><span class="hero__word" data-delay="0">The art of</span></span>
             <span class="hero__line hero__line--italic">
-              <span class="hero__word" data-delay="120">quiet</span>
-              <span class="hero__word" data-delay="220">opulence</span>
+              <span class="hero__word" data-delay="140">quiet opulence</span>
             </span>
           </h1>
-
           <p class="hero__lede">
-            A sanctuary of light, silk, and gold — composed for those who
-            collect moments, not merely objects.
+            Silk, gold leaf, and candlelit marble — a private salon for those who
+            collect atmosphere, not merely objects.
           </p>
-
           <div class="hero__actions">
             <a class="btn btn--gold" href="#hero" data-magnetic>
               <span>Enter the Atelier</span>
@@ -71,27 +71,35 @@
               <span>Request Invitation</span>
             </a>
           </div>
+          <dl class="hero__stats">
+            <div>
+              <dt>Paris</dt>
+              <dd>Since 1994</dd>
+            </div>
+            <div>
+              <dt>26</dt>
+              <dd>Looks</dd>
+            </div>
+            <div>
+              <dt>By hand</dt>
+              <dd>Atelier only</dd>
+            </div>
+          </dl>
         </div>
 
-        <div class="hero__visual" data-tilt>
-          <div class="hero__frame">
-            <div class="hero__frame-shine"></div>
-            <div class="hero__portrait">
-              <div class="hero__portrait-wash"></div>
-              <div class="hero__portrait-motif" aria-hidden="true"></div>
-            </div>
-            <div class="hero__seal">
-              <span>XXVI</span>
-              <small>Atelier</small>
-            </div>
-            <div class="hero__caption">
-              <span>Salon Noir</span>
-              <span>Silk &amp; Champagne Gold</span>
-            </div>
-          </div>
-          <div class="hero__orbit" aria-hidden="true">
-            <span></span>
-          </div>
+        <div class="hero__gallery">
+          <figure class="hero__portrait" data-tilt>
+            <img src="./assets/hero-couture.png" alt="Couture silk gown in the salon" />
+            <figcaption>
+              <span>Look 07 · Salon Noir</span>
+              <strong>Champagne silk</strong>
+            </figcaption>
+            <div class="hero__seal">XXVI</div>
+          </figure>
+          <figure class="hero__jewel">
+            <img src="./assets/hero-jewels.png" alt="Gold and diamond jewellery" />
+            <figcaption>Provenance gold</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -100,11 +108,6 @@
           <span>Silk · Gold Leaf · Marble · Candlelight · Silence · Couture · Provenance · Silk · Gold Leaf · Marble · Candlelight · Silence · Couture · Provenance ·</span>
           <span>Silk · Gold Leaf · Marble · Candlelight · Silence · Couture · Provenance · Silk · Gold Leaf · Marble · Candlelight · Silence · Couture · Provenance ·</span>
         </div>
-      </div>
-
-      <div class="hero__scroll">
-        <span>Descend</span>
-        <i></i>
       </div>
     </section>
 
