@@ -1,179 +1,243 @@
 (() => {
-  const hero = document.getElementById("hero");
-  const canvas = document.getElementById("petals");
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const effects = ["circle", "wipe", "rise", "zoom", "flip"];
-
-  const looks = [
+  const destinations = [
     {
+      src: "./assets/smta-meenakshi.png",
+      name: "MEENAKSHI",
+      tamil: "மீனாட்சி · மதுரை",
       kicker: "Temple city",
-      title: "Madurai Meenakshi",
-      lede: "Begin at home — Meenakshi’s gopuram, then Rameshwaram, Kanyakumari and the Tamil Nadu temple trail with SMTA’s own escorts.",
+      lede: "Start at Meenakshi’s gopuram, then the Tamil Nadu temple trail with SMTA escorts — road, rail, flight and cruise since 1985.",
+      fare: 5500,
+      end: "Meenakshi",
     },
     {
-      kicker: "Pilgrimage",
-      title: "Rameshwaram corridor",
-      lede: "Madurai–Rameshwaram packages from ₹5,500, plus longer circuits to Kanyakumari, Tanjore and Trichy on fixed departures.",
+      src: "./assets/smta-rameshwaram.png",
+      name: "RAMESWARAM",
+      tamil: "ராமேஸ்வரம்",
+      kicker: "Pilgrimage corridor",
+      lede: "Madurai–Rameshwaram from ₹5,500, plus Kanyakumari, Tanjore and Trichy on fixed departures from Madurai.",
+      fare: 5500,
+      end: "Rameswaram",
     },
     {
-      kicker: "Cruise & ferry",
-      title: "Sri Lanka 5 days",
-      lede: "Special offer: Sri Lanka ferry tour, last seats — call 9791848265. Also exclusive Sri Lanka holidays from ₹54,990.",
+      src: "./assets/smta-srilanka.png",
+      name: "SRI LANKA",
+      tamil: "இலங்கை படகு",
+      kicker: "Ferry · 5 days",
+      lede: "Sri Lanka ferry special — last seats. Call 9791848265. Exclusive island holidays also from ₹54,990.",
+      fare: 43000,
+      end: "Colombo",
     },
     {
-      kicker: "International",
-      title: "Dubai & Abu Dhabi",
-      lede: "IATA-authorised outbound holidays — Dubai from ₹79,990, plus Singapore, Malaysia, Egypt, Europe and more.",
+      src: "./assets/smta-dubai.png",
+      name: "DUBAI",
+      tamil: "துபாய் · அபுதாபி",
+      kicker: "IATA outbound",
+      lede: "Dubai / Abu Dhabi from ₹79,990, plus Singapore, Malaysia, Egypt and Europe — authorised IATA agent.",
+      fare: 79990,
+      end: "Dubai",
     },
     {
-      kicker: "North India",
-      title: "Kasi & Ayodhya",
-      lede: "Train and flight pilgrimages to Kasi, Ayodhya, Shirdi, Badrinath–Kedarnath — lakhs of travellers since 1985.",
+      src: "./assets/smta-kasi.png",
+      name: "KASI",
+      tamil: "காசி · அயோத்தி",
+      kicker: "North pilgrimage",
+      lede: "Kasi, Ayodhya, Shirdi, Badrinath–Kedarnath by train and flight. Lakhs of travellers with SMTA.",
+      fare: 24990,
+      end: "Kasi",
     },
   ];
 
-  const slides = [...document.querySelectorAll("#slides img")];
-  const phrases = [...document.querySelectorAll("#phrase span")];
-  const buttons = [...document.querySelectorAll("[data-look]")];
-  const lede = document.getElementById("lede");
-  const kicker = document.getElementById("look-kicker");
-  const title = document.getElementById("look-title");
-  const badge = document.getElementById("look-badge");
-  const frame = document.querySelector("[data-tilt]");
-
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hero = document.getElementById("hero");
+  const reel = document.getElementById("reel");
+  const indexEl = document.getElementById("index");
+  const coverflow = document.getElementById("coverflow");
+  const titleEl = document.getElementById("title");
+  const tamilEl = document.getElementById("tamil");
+  const kickerEl = document.getElementById("kicker");
+  const ledeEl = document.getElementById("lede");
+  const fareEl = document.getElementById("fare");
+  const routeEnd = document.getElementById("route-end");
+  const odometer = document.getElementById("odometer");
+  const cursor = document.getElementById("cursor");
+  const stripsCount = 8;
   let index = 0;
   let timer;
+  let fareValue = destinations[0].fare;
 
-  const activate = (nodes, i) => {
-    nodes.forEach((node, n) => node.classList.toggle("is-active", n === i));
+  destinations.forEach((item, i) => {
+    const shot = document.createElement("article");
+    shot.className = `shot${i === 0 ? " is-active" : ""}`;
+    shot.dataset.i = String(i);
+    for (let s = 0; s < stripsCount; s += 1) {
+      const strip = document.createElement("div");
+      strip.className = "strip";
+      strip.style.backgroundImage = `url("${item.src}")`;
+      strip.style.backgroundPosition = `${(s / (stripsCount - 1)) * 100}% center`;
+      strip.style.animationDelay = `${s * 70}ms`;
+      shot.appendChild(strip);
+    }
+    reel.appendChild(shot);
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.dataset.look = String(i);
+    btn.innerHTML = `<em></em>${String(i + 1).padStart(2, "0")} ${item.name}`;
+    if (i === 0) btn.className = "is-active";
+    btn.addEventListener("click", () => go(i, true));
+    indexEl.appendChild(btn);
+
+    const thumb = document.createElement("button");
+    thumb.type = "button";
+    thumb.className = "thumb";
+    thumb.dataset.look = String(i);
+    thumb.innerHTML = `<img src="${item.src}" alt="${item.name}">`;
+    thumb.addEventListener("click", () => go(i, true));
+    coverflow.appendChild(thumb);
+  });
+
+  const shots = [...document.querySelectorAll(".shot")];
+  const thumbs = [...document.querySelectorAll(".thumb")];
+  const indexBtns = [...indexEl.querySelectorAll("button")];
+
+  const scramble = (el, next) => {
+    if (reduced) {
+      el.textContent = next;
+      return;
+    }
+    const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let step = 0;
+    const id = window.setInterval(() => {
+      el.textContent = next
+        .split("")
+        .map((ch, n) => (ch === " " || n < step ? ch : glyphs[(step * 7 + n * 3) % glyphs.length]))
+        .join("");
+      step += 1;
+      if (step > next.length) {
+        window.clearInterval(id);
+        splitTitle(next);
+      }
+    }, 32);
   };
 
-  const show = (next) => {
-    index = (next + looks.length) % looks.length;
-    hero.dataset.fx = effects[index];
-    const look = looks[index];
-    activate(slides, index);
-    activate(phrases, index);
-    buttons.forEach((btn) => btn.classList.toggle("is-active", Number(btn.dataset.look) === index));
-    lede.classList.add("is-swap");
-    window.setTimeout(() => {
-      lede.textContent = look.lede;
-      kicker.textContent = look.kicker;
-      title.textContent = look.title;
-      badge.textContent = String(index + 1).padStart(2, "0");
-      lede.classList.remove("is-swap");
-    }, 180);
+  const splitTitle = (text) => {
+    titleEl.innerHTML = "";
+    [...text].forEach((ch, n) => {
+      const span = document.createElement("span");
+      span.className = "ch";
+      span.textContent = ch === " " ? "\u00a0" : ch;
+      span.style.animationDelay = `${n * 40}ms`;
+      titleEl.appendChild(span);
+    });
+  };
+
+  const tickFare = (target) => {
+    const from = fareValue;
+    const start = performance.now();
+    const step = (now) => {
+      const t = Math.min(1, (now - start) / 700);
+      const eased = 1 - (1 - t) ** 3;
+      fareValue = Math.round(from + (target - from) * eased);
+      fareEl.textContent = fareValue.toLocaleString("en-IN");
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
+  const layoutThumbs = () => {
+    thumbs.forEach((thumb, i) => {
+      const d = i - index;
+      const x = d * 7.2;
+      const rot = d * -28;
+      const scale = i === index ? 1.12 : 0.78;
+      const z = 20 - Math.abs(d);
+      thumb.style.transform = `translateX(${x}rem) translateZ(${i === index ? 40 : 0}px) rotateY(${rot}deg) scale(${scale})`;
+      thumb.style.zIndex = String(z);
+      thumb.classList.toggle("is-active", i === index);
+    });
+  };
+
+  const restartRoute = () => {
+    const line = document.querySelector(".route__line");
+    line.style.animation = "none";
+    void line.offsetWidth;
+    line.style.animation = "";
+    const meter = document.querySelector(".meter__run");
+    meter.style.animation = "none";
+    void meter.offsetWidth;
+    meter.style.animation = "";
+  };
+
+  const go = (next, user) => {
+    const leave = shots[index];
+    index = (next + destinations.length) % destinations.length;
+    const item = destinations[index];
+    leave.classList.remove("is-active");
+    leave.classList.add("is-leave");
+    window.setTimeout(() => leave.classList.remove("is-leave"), 820);
+    const incoming = shots[index];
+    incoming.classList.remove("is-active");
+    void incoming.offsetWidth;
+    incoming.classList.add("is-active");
+    shots[index].querySelectorAll(".strip").forEach((strip, s) => {
+      strip.style.animationDelay = `${s * 70}ms`;
+    });
+    indexBtns.forEach((btn, i) => btn.classList.toggle("is-active", i === index));
+    scramble(titleEl, item.name);
+    tamilEl.textContent = item.tamil;
+    kickerEl.textContent = item.kicker;
+    ledeEl.textContent = item.lede;
+    routeEnd.textContent = item.end;
+    const n = String(index + 1).padStart(2, "0");
+    odometer.innerHTML = `<span>${n[0]}</span><span>${n[1]}</span>`;
+    tickFare(item.fare);
+    layoutThumbs();
+    restartRoute();
+    if (user) play();
   };
 
   const play = () => {
     window.clearInterval(timer);
     if (reduced) return;
-    timer = window.setInterval(() => show(index + 1), 4200);
+    timer = window.setInterval(() => go(index + 1, false), 5000);
   };
 
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      show(Number(btn.dataset.look));
-      play();
-    });
-  });
-
-  document.querySelectorAll("[data-magnetic]").forEach((el) => {
-    el.addEventListener("mousemove", (event) => {
+  document.querySelectorAll("[data-ripple]").forEach((el) => {
+    el.addEventListener("click", (event) => {
       const rect = el.getBoundingClientRect();
-      el.style.transform = `translate(${(event.clientX - rect.left - rect.width / 2) * 0.2}px, ${(event.clientY - rect.top - rect.height / 2) * 0.25}px)`;
-    });
-    el.addEventListener("mouseleave", () => {
-      el.style.transform = "translate(0,0)";
+      const span = document.createElement("span");
+      span.className = "ripple";
+      span.style.left = `${event.clientX - rect.left}px`;
+      span.style.top = `${event.clientY - rect.top}px`;
+      el.appendChild(span);
+      window.setTimeout(() => span.remove(), 700);
     });
   });
 
+  let cx = 0;
+  let cy = 0;
   window.addEventListener("pointermove", (event) => {
-    const mx = (event.clientX / window.innerWidth - 0.5) * 16;
+    const dx = event.clientX - cx;
+    const dy = event.clientY - cy;
+    cx = event.clientX;
+    cy = event.clientY;
+    const ang = Math.atan2(dy, dx) * (180 / Math.PI);
+    cursor.style.transform = `translate(${cx - 22}px, ${cy - 22}px) rotate(${ang + 90}deg)`;
+    const mx = (event.clientX / window.innerWidth - 0.5) * 18;
     const my = (event.clientY / window.innerHeight - 0.5) * 12;
-    document.querySelector(".clouds").style.transform = `translate3d(${mx}px, ${my}px, 0)`;
-    if (!frame) return;
-    const rect = frame.getBoundingClientRect();
-    const px = (event.clientX - rect.left) / rect.width - 0.5;
-    const py = (event.clientY - rect.top) / rect.height - 0.5;
-    frame.style.transform = `rotateX(${(-py * 8).toFixed(2)}deg) rotateY(${(px * 10).toFixed(2)}deg)`;
-  });
-
-  document.querySelectorAll("[data-count]").forEach((el) => {
-    const end = Number(el.dataset.count);
-    if (reduced) {
-      el.textContent = String(end);
-      return;
-    }
-    const start = performance.now();
-    const tick = (now) => {
-      const t = Math.min(1, (now - start) / 1400);
-      el.textContent = String(Math.round(end * (1 - Math.pow(1 - t, 3))));
-      if (t < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  });
-
-  const ctx = canvas.getContext("2d");
-  const bits = [];
-  const colors = ["#f97316", "#14b8a6", "#eab308", "#fb7185", "#38bdf8"];
-
-  const resize = () => {
-    canvas.width = hero.clientWidth;
-    canvas.height = hero.clientHeight;
-  };
-
-  class Petal {
-    constructor() {
-      this.reset(true);
-    }
-
-    reset(initial) {
-      this.x = Math.random() * canvas.width;
-      this.y = initial ? Math.random() * canvas.height : -12;
-      this.r = Math.random() * 5 + 2;
-      this.s = Math.random() * 0.9 + 0.35;
-      this.w = (Math.random() - 0.5) * 0.8;
-      this.c = colors[Math.floor(Math.random() * colors.length)];
-      this.a = Math.random() * 0.45 + 0.25;
-    }
-
-    update() {
-      this.y += this.s;
-      this.x += Math.sin(this.y / 30) * 0.6 + this.w;
-      if (this.y > canvas.height + 10) this.reset(false);
-    }
-
-    draw() {
-      ctx.fillStyle = this.c;
-      ctx.globalAlpha = this.a;
-      ctx.beginPath();
-      ctx.ellipse(this.x, this.y, this.r, this.r * 0.6, this.y / 40, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.globalAlpha = 1;
-    }
-  }
-
-  const init = () => {
-    bits.length = 0;
-    for (let i = 0; i < 55; i += 1) bits.push(new Petal());
-  };
-
-  const render = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    bits.forEach((bit) => {
-      bit.update();
-      bit.draw();
+    document.querySelectorAll(".shot.is-active .strip").forEach((strip, s) => {
+      strip.style.backgroundPosition = `calc(${(s / 7) * 100}% + ${mx}px) calc(50% + ${my}px)`;
     });
-    requestAnimationFrame(render);
-  };
-
-  resize();
-  init();
-  if (!reduced) render();
-  play();
-  window.addEventListener("resize", () => {
-    resize();
-    init();
   });
+
+  splitTitle(destinations[0].name);
+  ledeEl.textContent = destinations[0].lede;
+  fareEl.textContent = destinations[0].fare.toLocaleString("en-IN");
+  layoutThumbs();
+
+  window.setTimeout(() => {
+    hero.classList.remove("is-booting");
+    hero.classList.add("is-playing");
+    play();
+  }, reduced ? 0 : 1400);
 })();
