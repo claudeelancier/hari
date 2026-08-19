@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hari — Cinematic Hero</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/hero.css" />
+  </head>
+  <body>
+    <section class="hero" id="hero" aria-label="Cinematic hero">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero__fallback" aria-hidden="true">
+        <div class="hero__ring hero__ring--c"></div>
+        <div class="hero__ring hero__ring--b"></div>
+        <div class="hero__ring"></div>
+        <div class="hero__orb"></div>
+      </div>
+
+      <div class="hero__vignette" aria-hidden="true"></div>
+      <div class="hero__grain" aria-hidden="true"></div>
+      <div class="hero__letterbox hero__letterbox--top" aria-hidden="true"></div>
+      <div class="hero__letterbox hero__letterbox--bottom" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">A cinematic 3D experience</p>
+        <h1 class="hero__title">
+          <span>HARI</span>
+        </h1>
+        <p class="hero__subtitle">
+          Light. Motion. Atmosphere. A hero built like an opening shot.
+        </p>
+        <a class="hero__cta" href="#hero">Enter the frame</a>
+      </div>
+
+      <div class="hero__meta" aria-hidden="true">
+        <span>01 / HERO</span>
+        <span>3D · ANIMATION</span>
+      </div>
+    </section>
+
+    <script src="./js/vendor/three.min.js"></script>
+    <script src="./js/hero.js"></script>
+  </body>
+</html>
