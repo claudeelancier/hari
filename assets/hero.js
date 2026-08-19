@@ -15,19 +15,6 @@
   }
   const slides = [...slidesRoot.children];
 
-  const goldLine = document.querySelector(".headline .gold");
-  if (goldLine && !reduce) {
-    const text = goldLine.textContent;
-    goldLine.textContent = "";
-    [...text].forEach((ch, i) => {
-      const span = document.createElement("span");
-      span.className = "char";
-      span.textContent = ch;
-      span.style.animationDelay = `${2.28 + i * 0.05}s`;
-      goldLine.appendChild(span);
-    });
-  }
-
   let slide = 0;
   let card = 0;
   const cycle = () => {
