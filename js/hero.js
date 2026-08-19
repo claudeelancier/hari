@@ -8,6 +8,7 @@
   const tiltEl = document.querySelector("[data-tilt]");
   const media = document.querySelector("[data-parallax]");
   const words = document.querySelectorAll(".hero__word");
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   words.forEach((word) => {
     word.style.setProperty("--d", word.dataset.delay || "0");
@@ -25,6 +26,87 @@
     });
   });
 
+  const looks = [
+    {
+      lede: "Silk, gold leaf, and candlelit marble — a private salon for those who collect atmosphere, not merely objects.",
+      look: "Look 07 · Salon Noir",
+      fabric: "Champagne silk",
+      jewel: "Provenance gold",
+      seal: "07",
+    },
+    {
+      lede: "A gilded stair, a held breath, cloth cut so the light itself becomes the garment.",
+      look: "Look 12 · Escalier",
+      fabric: "Atelier gold",
+      jewel: "Palace marble",
+      seal: "12",
+    },
+    {
+      lede: "Diamonds against black velvet — provenance worn as quietly as candlelight.",
+      look: "Look 18 · Provenance",
+      fabric: "Diamond gold",
+      jewel: "Night stair",
+      seal: "18",
+    },
+  ];
+
+  const backgrounds = [...document.querySelectorAll(".hero__bg")];
+  const portraits = [...document.querySelectorAll(".hero__portrait-stack img")];
+  const jewels = [...document.querySelectorAll(".hero__jewel-stack img")];
+  const phrases = [...document.querySelectorAll("#phrase span")];
+  const lookButtons = [...document.querySelectorAll("[data-look]")];
+  const lede = document.getElementById("lede");
+  const lookLabel = document.getElementById("look-label");
+  const lookFabric = document.getElementById("look-fabric");
+  const jewelLabel = document.getElementById("jewel-label");
+  const lookSeal = document.getElementById("look-seal");
+
+  let index = 0;
+  let timer;
+
+  const activate = (nodes, activeIndex) => {
+    nodes.forEach((node, i) => node.classList.toggle("is-active", i === activeIndex));
+  };
+
+  const showLook = (next) => {
+    index = (next + looks.length) % looks.length;
+    const look = looks[index];
+    hero.classList.add("is-changing");
+    window.setTimeout(() => hero.classList.remove("is-changing"), 900);
+
+    activate(backgrounds, index === 1 ? 1 : 0);
+    activate(portraits, index);
+    activate(jewels, index);
+    activate(phrases, index);
+    lookButtons.forEach((btn) => btn.classList.toggle("is-active", Number(btn.dataset.look) === index));
+
+    lede.classList.add("is-swap");
+    window.setTimeout(() => {
+      lede.textContent = look.lede;
+      lookLabel.textContent = look.look;
+      lookFabric.textContent = look.fabric;
+      jewelLabel.textContent = look.jewel;
+      lookSeal.textContent = look.seal;
+      lede.classList.remove("is-swap");
+    }, 220);
+  };
+
+  const play = () => {
+    window.clearInterval(timer);
+    if (reduced) return;
+    timer = window.setInterval(() => showLook(index + 1), 4500);
+  };
+
+  lookButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      showLook(Number(btn.dataset.look));
+      play();
+    });
+  });
+
+  hero.addEventListener("mouseenter", play);
+  play();
+
   let pointerX = window.innerWidth * 0.62;
   let pointerY = window.innerHeight * 0.42;
   let ringX = pointerX;
@@ -36,8 +118,8 @@
     spotlight.style.left = `${pointerX}px`;
     spotlight.style.top = `${pointerY}px`;
 
-    const mx = (event.clientX / window.innerWidth - 0.5) * 18;
-    const my = (event.clientY / window.innerHeight - 0.5) * 12;
+    const mx = (event.clientX / window.innerWidth - 0.5) * 22;
+    const my = (event.clientY / window.innerHeight - 0.5) * 14;
     if (media) media.style.transform = `translate3d(${mx}px, ${my}px, 0)`;
 
     if (tiltEl) {
@@ -82,8 +164,8 @@
       this.x = Math.random() * canvas.width;
       this.y = initial ? Math.random() * canvas.height : canvas.height + 8;
       this.size = Math.random() * 1.7 + 0.3;
-      this.speed = Math.random() * 0.38 + 0.08;
-      this.drift = (Math.random() - 0.5) * 0.28;
+      this.speed = Math.random() * 0.42 + 0.1;
+      this.drift = (Math.random() - 0.5) * 0.32;
       this.alpha = Math.random() * 0.5 + 0.12;
     }
 

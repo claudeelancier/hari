@@ -20,12 +20,10 @@
 
     <section class="hero" id="hero">
       <div class="hero__media" data-parallax>
-        <img
-          class="hero__bg"
-          src="./assets/hero-palace.png"
-          alt="Grand marble salon of Maison Hari"
-        />
+        <img class="hero__bg is-active" src="./assets/hero-palace.png" alt="" />
+        <img class="hero__bg" src="./assets/hero-stairs.png" alt="" />
       </div>
+      <div class="hero__wipe" aria-hidden="true"></div>
       <div class="hero__scrim" aria-hidden="true"></div>
       <canvas class="hero__particles" id="particles" aria-hidden="true"></canvas>
       <div class="hero__noise" aria-hidden="true"></div>
@@ -53,10 +51,14 @@
           <h1 class="hero__title">
             <span class="hero__line"><span class="hero__word" data-delay="0">The art of</span></span>
             <span class="hero__line hero__line--italic">
-              <span class="hero__word" data-delay="140">quiet opulence</span>
+              <span class="hero__rotate" id="phrase">
+                <span class="is-active">quiet opulence</span>
+                <span>private light</span>
+                <span>gilded silence</span>
+              </span>
             </span>
           </h1>
-          <p class="hero__lede">
+          <p class="hero__lede" id="lede">
             Silk, gold leaf, and candlelit marble — a private salon for those who
             collect atmosphere, not merely objects.
           </p>
@@ -71,35 +73,58 @@
               <span>Request Invitation</span>
             </a>
           </div>
-          <dl class="hero__stats">
-            <div>
-              <dt>Paris</dt>
-              <dd>Since 1994</dd>
-            </div>
-            <div>
-              <dt>26</dt>
-              <dd>Looks</dd>
-            </div>
-            <div>
-              <dt>By hand</dt>
-              <dd>Atelier only</dd>
-            </div>
-          </dl>
+          <div class="hero__looks" id="looks">
+            <button type="button" class="is-active" data-look="0">
+              <span class="hero__look-bar"></span>
+              07 Silk
+            </button>
+            <button type="button" data-look="1">
+              <span class="hero__look-bar"></span>
+              12 Stair
+            </button>
+            <button type="button" data-look="2">
+              <span class="hero__look-bar"></span>
+              18 Gold
+            </button>
+          </div>
         </div>
 
         <div class="hero__gallery">
           <figure class="hero__portrait" data-tilt>
-            <img src="./assets/hero-couture.png" alt="Couture silk gown in the salon" />
+            <div class="hero__portrait-stack">
+              <img class="is-active" src="./assets/hero-couture.png" alt="Champagne silk couture" />
+              <img src="./assets/hero-silkform.png" alt="Atelier silk form" />
+              <img src="./assets/hero-jewels.png" alt="Provenance jewellery" />
+            </div>
             <figcaption>
-              <span>Look 07 · Salon Noir</span>
-              <strong>Champagne silk</strong>
+              <span id="look-label">Look 07 · Salon Noir</span>
+              <strong id="look-fabric">Champagne silk</strong>
             </figcaption>
-            <div class="hero__seal">XXVI</div>
+            <div class="hero__seal" id="look-seal">07</div>
           </figure>
           <figure class="hero__jewel">
-            <img src="./assets/hero-jewels.png" alt="Gold and diamond jewellery" />
-            <figcaption>Provenance gold</figcaption>
+            <div class="hero__jewel-stack">
+              <img class="is-active" src="./assets/hero-jewels.png" alt="" />
+              <img src="./assets/hero-palace.png" alt="" />
+              <img src="./assets/hero-stairs.png" alt="" />
+            </div>
+            <figcaption id="jewel-label">Provenance gold</figcaption>
           </figure>
+        </div>
+      </div>
+
+      <div class="hero__film" aria-hidden="true">
+        <div class="hero__film-track">
+          <img src="./assets/hero-couture.png" alt="" />
+          <img src="./assets/hero-palace.png" alt="" />
+          <img src="./assets/hero-jewels.png" alt="" />
+          <img src="./assets/hero-stairs.png" alt="" />
+          <img src="./assets/hero-silkform.png" alt="" />
+          <img src="./assets/hero-couture.png" alt="" />
+          <img src="./assets/hero-palace.png" alt="" />
+          <img src="./assets/hero-jewels.png" alt="" />
+          <img src="./assets/hero-stairs.png" alt="" />
+          <img src="./assets/hero-silkform.png" alt="" />
         </div>
       </div>
 
