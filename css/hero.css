@@ -26,6 +26,7 @@ a {
   min-height: 100svh;
   overflow: hidden;
   background: #ffe8c8;
+  perspective: 1400px;
 }
 
 .nav {
@@ -116,6 +117,46 @@ a {
   animation: pan 18s ease-in-out infinite alternate;
 }
 
+.shine {
+  position: absolute;
+  inset: -40% -20%;
+  background: linear-gradient(105deg, transparent 42%, rgba(255, 247, 237, 0.38) 50%, transparent 58%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card.is-hero .shine {
+  animation: sheen 2.4s var(--ease) 0.4s both;
+}
+
+.timer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 12;
+  height: 5px;
+  background: rgba(255, 247, 237, 0.45);
+}
+
+.timer i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #ea580c, #facc15, #14b8a6);
+}
+
+.hero.is-playing .timer i {
+  animation: fill 5.2s linear infinite;
+}
+
+.sparks {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
 .card:not(.is-hero) {
   z-index: 4;
   height: 7.2rem;
@@ -123,6 +164,12 @@ a {
   min-width: 8.5rem;
   bottom: 1.25rem;
   cursor: pointer;
+  animation: bob 3.4s ease-in-out infinite;
+}
+
+.card:not(.is-hero):nth-child(2n) { animation-delay: 0.4s; }
+.card.is-moving {
+  animation: none !important;
 }
 
 .card:not(.is-hero) img {
@@ -189,10 +236,19 @@ a {
   line-height: 0.96;
 }
 
+.copy h2 .ch {
+  display: inline-block;
+  animation: letter 0.7s var(--ease) both;
+}
+
 .copy h2 em {
   display: block;
   font-style: italic;
   color: var(--accent);
+}
+
+.copy h2 em .ch {
+  animation-name: letterSoft;
 }
 
 .tamil {
@@ -232,7 +288,9 @@ a {
   animation: rise 0.7s var(--ease) both;
 }
 
-.card.is-hero .copy > *:nth-child(2) { animation-delay: 0.1s; }
+.card.is-hero .copy h2 {
+  animation: none;
+}
 .card.is-hero .copy > *:nth-child(3) { animation-delay: 0.16s; }
 .card.is-hero .copy > *:nth-child(4) { animation-delay: 0.22s; }
 .card.is-hero .copy > *:nth-child(5) { animation-delay: 0.28s; }
@@ -244,6 +302,32 @@ a {
 
 @keyframes rise {
   from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes sheen {
+  from { opacity: 0; transform: translateX(-35%) rotate(8deg); }
+  30% { opacity: 1; }
+  to { opacity: 0; transform: translateX(35%) rotate(8deg); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-0.4deg); }
+  50% { transform: translateY(-9px) rotate(0.8deg); }
+}
+
+@keyframes fill {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes letter {
+  from { opacity: 0; transform: translateY(0.7em) rotateX(70deg); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes letterSoft {
+  from { opacity: 0; transform: translateX(-12px); }
   to { opacity: 1; transform: none; }
 }
 
