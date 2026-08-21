@@ -35,7 +35,7 @@ export default function AnimatedCounter({
   className = '',
 }) {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-40px' })
+  const inView = useInView(ref, { once: true, amount: 0.2, margin: '0px 0px -10% 0px' })
   const parsed = useMemo(() => parseValue(value), [value])
   const [display, setDisplay] = useState(
     `${parsed.prefix}${formatNumber(0, parsed.decimals, parsed.indian)}${parsed.suffix}`,

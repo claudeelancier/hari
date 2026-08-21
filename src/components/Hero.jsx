@@ -164,7 +164,7 @@ function DashboardMock() {
             </header>
             <AreaChart className="area-chart" />
           </article>
-          <article className="panel payroll-mini">
+            <article className="panel payroll-mini" title="May payroll has been processed">
             <header>Payroll Summary</header>
             <strong>
               <AnimatedCounter value="₹24565000" />
