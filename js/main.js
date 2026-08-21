@@ -52,4 +52,34 @@
       form.reset();
     });
   }
+
+  const reveal = document.querySelectorAll(".js-animate");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.25 });
+    reveal.forEach(function (el) { io.observe(el); });
+  } else {
+    reveal.forEach(function (el) { el.classList.add("in-view"); });
+  }
+
+  document.querySelectorAll("[data-prompt]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const log = document.getElementById("ai-log");
+      if (!log) return;
+      const user = document.createElement("div");
+      user.className = "msg user";
+      user.textContent = btn.getAttribute("data-prompt");
+      const bot = document.createElement("div");
+      bot.className = "msg bot";
+      bot.textContent = btn.getAttribute("data-reply") || "Done. I prepared a summary in VeltroHR.";
+      log.appendChild(user);
+      log.appendChild(bot);
+    });
+  });
 })();

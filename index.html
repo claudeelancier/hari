@@ -36,26 +36,14 @@
         "name": "VeltroHR",
         "url": "https://veltrohr.com/",
         "logo": "https://veltrohr.com/assets/logo.png",
-        "telephone": "+91-1800-120-8385",
-        "sameAs": [
-          "https://www.linkedin.com/",
-          "https://www.youtube.com/",
-          "https://x.com/",
-          "https://www.instagram.com/"
-        ]
+        "telephone": "+91-1800-120-8385"
       },
       {
         "@type": "SoftwareApplication",
         "name": "VeltroHR",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
-        "description": "Cloud HR software for recruitment, onboarding, employee management, attendance, payroll, appraisals, and compliance.",
-        "offers": {
-          "@type": "Offer",
-          "availability": "https://schema.org/OnlineOnly",
-          "price": "0",
-          "priceCurrency": "INR"
-        }
+        "description": "Cloud HR software for recruitment, onboarding, employee management, attendance, payroll, appraisals, and compliance."
       },
       {
         "@type": "WebSite",
@@ -71,8 +59,9 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="wrap nav" id="nav">
-      <a class="logo" href="#top" aria-label="VeltroHR home">
-        <img src="assets/logo.png" width="220" height="56" alt="VeltroHR logo">
+      <a class="logo" href="#top">
+        <img src="assets/logo-icon.png" width="34" height="34" alt="">
+        VeltroHR
       </a>
       <nav aria-label="Primary">
         <ul class="nav-links">
@@ -101,18 +90,38 @@
   </header>
 
   <main id="main">
-    <section class="hero wrap" id="top">
-      <div class="hero-grid">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
         <div>
           <h1>HR management built around your business.</h1>
-          <p class="lead">Run recruitment, onboarding, attendance, payroll, performance, and multi-branch operations from one clean HR platform designed for growing Indian businesses.</p>
+          <p class="lead">Manage recruitment, onboarding, attendance, payroll, performance, and multi-branch operations from one platform built for how your teams actually work.</p>
           <div class="hero-ctas">
             <a class="btn btn-lime" href="#demo" data-open-demo>Book a Demo</a>
             <a class="btn btn-ghost" href="#platform"><span class="btn-play" aria-hidden="true">▶</span> Explore Platform</a>
           </div>
         </div>
         <div class="hero-visual">
-          <img src="assets/hero-dashboard.png" width="720" height="500" alt="VeltroHR overview dashboard showing total employees, present today, and leave requests">
+          <article class="overview" aria-label="Overview dashboard">
+            <h3>Overview</h3>
+            <div class="stat-row">
+              <div class="stat"><span>Total Employees</span><b>1,248</b></div>
+              <div class="stat"><span>Present Today</span><b>942</b></div>
+            </div>
+            <div class="lists">
+              <div class="mini">
+                <strong>Leave Requests</strong>
+                <div class="mini-row"><span class="av" style="background:#7eb6ff"></span> Ananya Rao <span class="badge pending">Pending</span></div>
+                <div class="mini-row"><span class="av" style="background:#8be3c4"></span> Kabir Shah <span class="badge ok">Approved</span></div>
+                <div class="mini-row"><span class="av" style="background:#ffb3c1"></span> Meera Joshi <span class="badge pending">Pending</span></div>
+              </div>
+              <div class="mini">
+                <strong>Recent Joiners</strong>
+                <div class="mini-row"><span class="av" style="background:#d4f03d"></span> Rohan Das <span>HR</span></div>
+                <div class="mini-row"><span class="av" style="background:#7eb6ff"></span> Fatima Ali <span>Ops</span></div>
+                <div class="mini-row"><span class="av" style="background:#ff5733"></span> Vivek Nair <span>Plant</span></div>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -126,46 +135,40 @@
 
     <section class="section" id="platform">
       <div class="wrap">
-        <p class="kicker">Platform</p>
         <h2>Everything your HR team needs, in one place.</h2>
         <div class="platform-grid">
-          <article class="card recruit">
-            <h3>Recruitment &amp; Onboarding</h3>
-            <p>Track open roles, shortlist candidates, and convert offers into day-one ready employees.</p>
-            <div class="positions">
-              <div class="pos"><span>HR Executive</span><b>12 applicants</b></div>
-              <div class="pos"><span>Plant Supervisor</span><b>8 applicants</b></div>
-              <div class="pos"><span>Accounts Associate</span><b>21 applicants</b></div>
-            </div>
+          <article class="card lift recruit">
+            <h3>Recruitment</h3>
+            <p>Open roles, candidate pipelines, and offer-to-join tracking.</p>
             <div class="avatars" aria-hidden="true">
-              <span style="background:#7b3cff"></span>
-              <span style="background:#1ec8c0"></span>
-              <span style="background:#ff7a3a"></span>
-              <span style="background:#1e4fd8"></span>
+              <span style="background:#7eb6ff"></span>
+              <span style="background:#8be3c4"></span>
+              <span style="background:#ffb3c1"></span>
+              <span style="background:#d4f03d"></span>
+              <span style="background:#ff5733"></span>
             </div>
           </article>
 
-          <figure class="card photo-card">
-            <img src="assets/hr-woman-laptop.png" width="480" height="640" alt="HR manager reviewing employee records on a laptop">
-          </figure>
-
-          <article class="card attend" id="attendance">
-            <h3>Attendance &amp; Leave</h3>
-            <p>Weekly attendance across shifts, sites, and remote teams.</p>
-            <div class="bars" aria-hidden="true">
-              <b style="height:46%;background:#c8ff00"></b>
-              <b style="height:72%;background:#1ec8c0"></b>
-              <b style="height:58%;background:#7b3cff"></b>
-              <b style="height:90%;background:#c8ff00"></b>
-              <b style="height:64%;background:#ff7a3a"></b>
-              <b style="height:80%;background:#1e4fd8"></b>
-              <b style="height:52%;background:#c8ff00"></b>
+          <article class="card attend js-animate" id="attendance">
+            <img src="assets/hr-woman-laptop.png" width="640" height="800" alt="HR professional working on a laptop">
+            <div class="attend-overlay">
+              <h3>Attendance &amp; Leave</h3>
+              <p>Weekly attendance across offices and plant shifts.</p>
+              <div class="bars" aria-hidden="true">
+                <b style="height:48%;background:#d4f03d"></b>
+                <b style="height:74%;background:#8be3c4"></b>
+                <b style="height:56%;background:#7eb6ff"></b>
+                <b style="height:92%;background:#d4f03d"></b>
+                <b style="height:64%;background:#ffb3c1"></b>
+                <b style="height:80%;background:#7eb6ff"></b>
+                <b style="height:50%;background:#8be3c4"></b>
+              </div>
             </div>
           </article>
 
-          <article class="card employee">
+          <article class="card lift employee js-animate">
             <h3>Employee Management</h3>
-            <p>Complete people records, documents, and status in one profile.</p>
+            <p>People status, documents, and records in one profile.</p>
             <div class="employee-top">
               <div class="avatar-lg" aria-hidden="true"></div>
               <div>
@@ -174,30 +177,37 @@
               </div>
             </div>
             <div class="donut-wrap">
-              <div class="donut" aria-hidden="true"></div>
+              <svg class="donut" viewBox="0 0 140 140" aria-hidden="true">
+                <circle class="track" cx="70" cy="70" r="54"></circle>
+                <circle class="seg" cx="70" cy="70" r="54" stroke="#d4f03d" style="--end:129"></circle>
+                <circle class="seg" cx="70" cy="70" r="54" stroke="#7eb6ff" stroke-dasharray="68 271" style="--end:271"></circle>
+                <circle class="seg" cx="70" cy="70" r="54" stroke="#ffb3c1" stroke-dasharray="61 278" style="--end:278"></circle>
+              </svg>
               <div class="legend">
-                <div><i style="background:#c8ff00"></i> Active 62%</div>
-                <div><i style="background:#5b8cff"></i> On leave 20%</div>
-                <div><i style="background:#ff7a3a"></i> Inactive 18%</div>
+                <div><i style="background:#d4f03d"></i> Active</div>
+                <div><i style="background:#7eb6ff"></i> On Leave</div>
+                <div><i style="background:#ffb3c1"></i> Inactive</div>
               </div>
             </div>
           </article>
 
-          <article class="card payroll-mini" id="solutions">
+          <article class="card lift payroll-mini" id="solutions">
             <h3>Payroll</h3>
-            <p>May 2024 Payroll</p>
+            <p>May 2024 payroll</p>
             <div class="pay-amount">₹48,26,400</div>
             <p>Processed for 942 employees</p>
           </article>
 
-          <article class="card perf">
+          <article class="card lift perf">
+            <div class="icon-row">★</div>
             <h3>Performance &amp; Appraisal</h3>
-            <p>Set goals, collect reviews, and close appraisal cycles without spreadsheets.</p>
+            <p>Goals, reviews, and appraisal cycles in one workflow.</p>
           </article>
 
-          <article class="card branch-mini">
+          <article class="card lift branch-mini">
+            <div class="icon-row">◎</div>
             <h3>Multi-Branch Management</h3>
-            <p>Run Mumbai, NCR, Bengaluru, and Pune from a single source of truth.</p>
+            <p>Run Mumbai, NCR, Bengaluru, and Pune from one source of truth.</p>
           </article>
         </div>
       </div>
@@ -205,20 +215,23 @@
 
     <section class="section dark-band" id="payroll">
       <div class="wrap">
-        <p class="kicker" style="color:#c8ff00">Payroll dashboard</p>
-        <h2>Payroll that stays accurate across every location.</h2>
+        <p class="kicker" style="color:#d4f03d">Payroll</p>
+        <h2>Payroll that follows your rules.</h2>
         <div class="payroll-board">
-          <article class="panel">
-            <h3>Payroll Report</h3>
-            <div class="chart" role="img" aria-label="Payroll trend line chart for the current quarter"></div>
+          <article class="panel js-animate">
+            <h3>Net Pay</h3>
+            <svg class="chart" viewBox="0 0 400 190" role="img" aria-label="Net pay trend chart">
+              <path d="M8 150 H392" stroke="#333" stroke-width="1"></path>
+              <path class="chart-line" d="M10 140 C50 132 80 70 120 90 C170 118 210 40 250 62 C300 88 340 36 390 52"></path>
+            </svg>
           </article>
           <article class="panel">
-            <h3>Payment status</h3>
-            <div class="pay-row"><span>Priya Sharma</span><span class="badge">Processed</span></div>
-            <div class="pay-row"><span>Arjun Mehta</span><span class="badge">Processed</span></div>
-            <div class="pay-row"><span>Neha Iyer</span><span class="badge">Processed</span></div>
-            <div class="pay-row"><span>Rahul Nair</span><span style="color:#ffb14a;font-weight:700">Pending</span></div>
-            <div class="pay-row"><span>Sana Khan</span><span class="badge">Processed</span></div>
+            <h3>Employee payroll</h3>
+            <div class="pay-row"><span>Priya Sharma</span><span class="badge ok">Processed</span></div>
+            <div class="pay-row"><span>Arjun Mehta</span><span class="badge ok">Processed</span></div>
+            <div class="pay-row"><span>Neha Iyer</span><span class="badge ok">Processed</span></div>
+            <div class="pay-row"><span>Rahul Nair</span><span class="badge pending">Pending</span></div>
+            <div class="pay-row"><span>Sana Khan</span><span class="badge ok">Processed</span></div>
           </article>
           <article class="panel">
             <h3>Contributions</h3>
@@ -231,37 +244,39 @@
       </div>
     </section>
 
-    <section class="section" id="records">
-      <div class="wrap record">
+    <section class="section cream" id="records">
+      <div class="wrap">
+        <div class="record-head">
+          <h2>One complete employee record.</h2>
+        </div>
         <div class="portrait-wrap">
-          <img src="assets/priya-sharma.png" width="430" height="560" alt="Portrait of Priya Sharma, HR manager">
-          <div class="float-chip chip-1"><strong>Attendance</strong><span>96% this month</span></div>
-          <div class="float-chip chip-2"><strong>Payroll</strong><span>₹1,24,800 net</span></div>
-          <div class="float-chip chip-3"><strong>Leave</strong><span>12 days available</span></div>
+          <img src="assets/priya-sharma.png" width="430" height="560" alt="Priya Sharma, HR Manager">
+          <div class="float-chip chip-1"><strong>Attendance</strong><span>22 present days</span></div>
+          <div class="float-chip chip-2"><strong>Payroll</strong><span>Net pay ₹1,24,800</span></div>
+          <div class="float-chip chip-3"><strong>Leave</strong><span>Casual 6 · Earned 8 · Sick 4</span></div>
           <div class="float-chip chip-4"><strong>Performance</strong><span class="stars">★★★★★</span> 4.5/5</div>
         </div>
-        <div>
-          <p class="kicker">Employee record</p>
-          <h2>Every people decision starts with a complete employee file.</h2>
-          <p>VeltroHR keeps attendance, payroll, leave balances, documents, and performance in one record. HR managers like Priya Sharma can answer questions in seconds instead of searching across tools.</p>
-        </div>
+        <p style="text-align:center;margin:18px 0 0;font-weight:700">Priya Sharma · HR Manager</p>
       </div>
     </section>
 
-    <section class="section" id="compliance" style="padding-top:0">
+    <section class="section" id="compliance">
       <div class="wrap two-col">
         <figure class="map-card">
-          <img src="assets/india-branches.png" width="720" height="480" alt="India map highlighting VeltroHR branches in Mumbai, NCR, Bengaluru, and Pune">
+          <img src="assets/india-branches.png" width="720" height="480" alt="India map with VeltroHR branches in Mumbai, NCR, Bengaluru, and Pune">
+          <div class="pin" style="top:38%;left:18%">Mumbai · 412</div>
+          <div class="pin" style="top:22%;left:46%">NCR · 288</div>
+          <div class="pin" style="top:62%;left:42%">Bengaluru · 336</div>
+          <div class="pin" style="top:48%;left:28%">Pune · 212</div>
         </figure>
         <div>
-          <p class="kicker">Multi-branch &amp; compliance</p>
-          <h2>ESI &amp; payroll compliance support</h2>
-          <p>Statutory workflows for PF, ESI, professional tax, labour welfare, and TDS, with employer contribution visibility by branch.</p>
+          <h2>ESI &amp; Payroll Compliance Support</h2>
+          <p style="color:var(--muted)">Statutory reports for PF, ESI, professional tax, and TDS, with employer contribution visibility by branch.</p>
           <div class="compliance-grid">
-            <div class="comp">PF</div>
-            <div class="comp">ESI</div>
-            <div class="comp">PT</div>
-            <div class="comp">TDS</div>
+            <div class="comp lift">PF returns</div>
+            <div class="comp lift">ESI filings</div>
+            <div class="comp lift">PT challans</div>
+            <div class="comp lift">TDS worksheets</div>
           </div>
           <table class="table">
             <caption class="kicker" style="text-align:left;padding:8px 12px">Employer contribution</caption>
@@ -278,27 +293,32 @@
 
     <section class="section ai-band" id="ai">
       <div class="wrap">
-        <p class="kicker">AI powered</p>
-        <h2>Veltro AI Assistant for everyday HR work.</h2>
+        <h2>HR, with intelligence built in.</h2>
         <div class="ai-layout">
-          <div class="chat" aria-label="Veltro AI Assistant conversation">
-            <div class="msg bot">Good morning. 18 leave requests are waiting and payroll cutoff is tomorrow.</div>
-            <div class="msg user">Show pending leave in Bengaluru plant.</div>
-            <div class="msg bot">7 requests. 4 casual leave, 2 sick leave, 1 compensatory off. Want me to draft approvals?</div>
-            <div class="msg user">Yes, flag any attendance conflicts.</div>
+          <div class="chat" aria-label="Veltro AI Assistant">
+            <h3>Veltro AI Assistant</h3>
+            <div id="ai-log">
+              <div class="msg bot">I can draft payroll summaries, flag leave conflicts, and rank candidates.</div>
+            </div>
+            <div class="prompts">
+              <button type="button" data-prompt="Summarize pending leave" data-reply="18 leave requests are open. Bengaluru has 7, mostly casual leave.">Summarize pending leave</button>
+              <button type="button" data-prompt="Show overtime this week" data-reply="Plant 2 overtime is 6.4% above last week. 11 employees crossed 9 hours.">Show overtime this week</button>
+              <button type="button" data-prompt="Rank today’s applicants" data-reply="Top fit: Meera Joshi, Kabir Shah, Ananya Rao. I attached interview kits.">Rank today’s applicants</button>
+            </div>
           </div>
           <div class="ai-cards">
-            <article class="ai-card">
-              <h3>Recruitment support</h3>
-              <p>Screen resumes, rank fit, and draft interview kits from the job description.</p>
+            <article class="ai-card lift">
+              <h3>AI Recruitment Support</h3>
+              <p>Screen resumes, rank role fit, and draft interview kits.</p>
             </article>
-            <article class="ai-card">
-              <h3>Document processing</h3>
-              <p>Extract data from offer letters, KYC, and salary slips into employee records.</p>
+            <article class="ai-card lift">
+              <h3>AI Payroll Insights</h3>
+              <p>Catch overtime spikes, hold variance, and cutoff risks before payday.</p>
             </article>
-            <article class="ai-card">
-              <h3>Analytics</h3>
-              <p>Ask in plain language for attrition, overtime, or payroll variance by branch.</p>
+            <article class="ai-card lift js-animate">
+              <h3>AI HR Analytics</h3>
+              <p>Turnover Risk <span class="low">Low</span></p>
+              <div class="meter"><i></i></div>
             </article>
           </div>
         </div>
@@ -307,24 +327,24 @@
 
     <section class="section" id="workflow">
       <div class="wrap">
-        <p class="kicker">Workflow</p>
-        <h2>From hire to appraisal, without switching tools.</h2>
-        <div class="workflow">
-          <div class="step"><div class="dot">1</div>Recruit</div>
-          <div class="step"><div class="dot">2</div>Onboard</div>
-          <div class="step"><div class="dot">3</div>Manage</div>
-          <div class="step"><div class="dot">4</div>Track attendance &amp; leave</div>
-          <div class="step"><div class="dot">5</div>Process payroll</div>
-          <div class="step"><div class="dot">6</div>Manage performance</div>
-          <div class="step"><div class="dot">7</div>Track appraisals</div>
+        <h2>From hiring to payroll, all connected.</h2>
+        <div class="workflow-wrap">
+          <div class="workflow">
+            <div class="step"><div class="dot">01</div>Recruit</div>
+            <div class="step"><div class="dot">02</div>Onboard</div>
+            <div class="step"><div class="dot">03</div>Manage</div>
+            <div class="step"><div class="dot">04</div>Track Attendance</div>
+            <div class="step"><div class="dot">05</div>Process Payroll</div>
+            <div class="step"><div class="dot">06</div>Manage Performance</div>
+            <div class="step"><div class="dot">07</div>Track Appraisals</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="industries" style="padding-top:20px">
+    <section class="section cream" id="industries" style="padding-top:20px">
       <div class="wrap">
-        <p class="kicker">Industries</p>
-        <h2>Built for teams that run on the ground.</h2>
+        <h2>Built for businesses, not just HR departments.</h2>
         <div class="industries">
           <a class="industry" href="#demo" data-open-demo>
             <img src="assets/industry-manufacturing.png" alt="Manufacturing plant floor">
@@ -354,9 +374,11 @@
       </div>
     </section>
 
-    <section class="cta-final wrap" id="demo">
-      <h2>Make HR easier to manage</h2>
-      <a class="btn btn-lime" href="#demo" data-open-demo style="padding:16px 34px;font-size:18px">Book a Demo</a>
+    <section class="cta-final" id="demo">
+      <div class="wrap">
+        <h2>Make HR easier to manage</h2>
+        <a class="btn btn-lime" href="#demo" data-open-demo style="padding:16px 34px;font-size:18px">Book a Demo</a>
+      </div>
     </section>
   </main>
 
@@ -364,12 +386,14 @@
     <div class="wrap">
       <div class="footer-grid">
         <div>
-          <img class="footer-logo" src="assets/logo.png" alt="VeltroHR">
+          <div class="footer-brand">
+            <img src="assets/logo-icon.png" width="32" height="32" alt="">
+            VeltroHR
+          </div>
           <p>HR, payroll, attendance, and compliance software for multi-location businesses.</p>
           <p><a href="tel:+9118001208385">+91 1800 120 8385</a></p>
           <div class="socials">
             <a href="https://www.linkedin.com/" aria-label="LinkedIn">in</a>
-            <a href="https://www.youtube.com/" aria-label="YouTube">▶</a>
             <a href="https://x.com/" aria-label="X">X</a>
             <a href="https://www.instagram.com/" aria-label="Instagram">ig</a>
           </div>
