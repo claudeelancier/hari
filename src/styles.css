@@ -1885,7 +1885,6 @@ em.ok {
     white-space: normal;
   }
   .bento,
-  .stat-grid,
   .dash-body,
   .recruit,
   .pay-icons,
@@ -1894,6 +1893,9 @@ em.ok {
   .footer-grid,
   .ai-grid {
     grid-template-columns: 1fr;
+  }
+  .stat-grid {
+    grid-template-columns: 1fr 1fr;
   }
   .bento {
     grid-template-areas:
