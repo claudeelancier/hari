@@ -7,14 +7,14 @@
       en: "Kasi · Ayodhya",
       price: "INR 24,990 onwards · Ex Madurai",
       image:
-        "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1765138734178-42765e148bfe?auto=format&fit=crop&w=1400&q=80",
     },
     {
       ta: "மதுரை",
       en: "Meenakshi · Home",
       price: "Where every yatra begins",
       image:
-        "https://images.unsplash.com/photo-1706186839147-0d708602587b?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1646056385288-46b2ce4ca4f8?auto=format&fit=crop&w=1400&q=80",
     },
     {
       ta: "துபாய்",
@@ -157,17 +157,35 @@
     document.querySelectorAll("[data-assemble]").forEach((el) => {
       const text = el.dataset.assemble;
       el.textContent = "";
-      [...text].forEach((ch, i) => {
-        const span = document.createElement("span");
-        span.className = "glyph";
-        span.textContent = ch === " " ? "\u00a0" : ch;
-        const ang = (i / text.length) * Math.PI * 2 + Math.random();
-        const dist = 80 + Math.random() * 140;
-        span.style.setProperty("--ox", `${Math.cos(ang) * dist}px`);
-        span.style.setProperty("--oy", `${Math.sin(ang) * dist}px`);
-        span.style.setProperty("--or", `${(Math.random() - 0.5) * 50}deg`);
-        span.style.setProperty("--d", `${0.35 + i * 0.045}s`);
-        el.appendChild(span);
+      const words = text.split(" ");
+      let delay = 0.35;
+      words.forEach((word, wi) => {
+        const wrap = document.createElement("span");
+        wrap.className = "word";
+        [...word].forEach((ch) => {
+          const span = document.createElement("span");
+          span.className = "glyph";
+          span.textContent = ch;
+          const ang = delay * 2.1;
+          const dist = 80 + (delay % 1) * 140;
+          span.style.setProperty("--ox", `${Math.cos(ang) * dist}px`);
+          span.style.setProperty("--oy", `${Math.sin(ang) * dist}px`);
+          span.style.setProperty("--or", `${((delay * 37) % 50) - 25}deg`);
+          span.style.setProperty("--d", `${delay}s`);
+          wrap.appendChild(span);
+          delay += 0.045;
+        });
+        el.appendChild(wrap);
+        if (wi < words.length - 1) {
+          const gap = document.createElement("span");
+          gap.className = "glyph";
+          gap.textContent = "\u00a0";
+          gap.style.setProperty("--ox", "0px");
+          gap.style.setProperty("--oy", "12px");
+          gap.style.setProperty("--or", "0deg");
+          gap.style.setProperty("--d", `${delay}s`);
+          el.appendChild(gap);
+        }
       });
     });
   }
