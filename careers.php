@@ -1,50 +1,31 @@
 <?php
 $title = 'Career';
-include 'partials/header.php' ?>
-
-<!--Start Header -->
-<header class="nav-bg-w main-header navfix fixed-top menu-white">
-   <?php include 'partials/menu.php' ?>
-</header>
-
-<!--Breadcrumb Area-->
-<section class="breadcrumb-area" data-background="images/banner/4.jpg" id="breadcrumb" prTitle="Job Openings" brTitle="Career">
-   <?php include 'partials/breadcrumb.php' ?>
+$extra_inline_js = '$(".custom-file-input").on("change", function() { var fileName = $(this).val().split("\\\\").pop(); $(this).siblings(".custom-file-label").addClass("selected").html(fileName); });';
+include 'partials/header.php';
+include 'partials/menu.php';
+?>
+<section class="page-hero" id="breadcrumb" prTitle="Job Openings" brTitle="Career">
+   <?php include 'partials/breadcrumb.php'; ?>
 </section>
-<!--End Breadcrumb Area-->
 
-<!--Start About-->
-<section class="about-agencys pad-tb block-1">
-   <div class="container">
-      <div class="row">
-         <div class="col-lg-6">
-            <div class="common-heading text-l">
-               <h2 class="mb20">Career and Culture at Elancier</h2>
-               <p>At elancier, we are constantly looking to bring quality professionals on board to join our family and enhance our abilities. We take pride in being able to identify individuals with an incredible talent for a design or programming career. With fun, enthusiasm and continual innovation as essential components of our web development careers, our work environment is best defined as 'bustling with creativity & innovation'</p>
-
-               <a href="#jobs" class="btn-main bg-btn2 lnk mt30"> View Opening <i class="fas fa-chevron-right fa-icon"></i><span class="circle"></span></a>
-            </div>
-         </div>
-         <div class="col-lg-6 v-center">
-            <div class="image-block mb0 m-mt30">
-               <img src="images/career/career.jpg" alt="career" class="img-fluid" />
-            </div>
-         </div>
+<section class="section">
+   <div class="shell career-layout">
+      <div class="in-view">
+         <p class="kicker">Studio life</p>
+         <h2>Career and Culture at Elancier</h2>
+         <p>At elancier, we are constantly looking to bring quality professionals on board to join our family and enhance our abilities. We take pride in being able to identify individuals with an incredible talent for a design or programming career. With fun, enthusiasm and continual innovation as essential components of our web development careers, our work environment is best defined as 'bustling with creativity & innovation'</p>
+         <a href="#jobs" class="btn btn-solid">View Opening</a>
+      </div>
+      <div class="in-view">
+         <img src="images/career/career.jpg" alt="career">
       </div>
    </div>
 </section>
 
-<!--Start Enquire Form-->
-<section class="contact-page pad-tb" id="jobs">
-   <div class="container">
-      <div class="row justify-content-center">
-         <div class="col-lg-8">
-            <div class="common-heading ptag">
-               <span>Jobs</span>
-               <!-- <h2>No Openings at the Current time</h2> 
-               <p class="mb60">2021-2022 Latest Jobs</p> -->
-            </div>
-         </div>
+<section class="section" id="jobs" style="padding-top:0">
+   <div class="shell">
+      <div class="section-head in-view">
+         <p class="kicker">Jobs</p>
       </div>
       <div class="row justify-content-center">
          <div class="col-lg-8">
@@ -312,12 +293,4 @@ include 'partials/header.php' ?>
    </div>
 </div>
 
-<?php include 'partials/footer.php' ?>
-
-<script>
-   // Add the following code if you want the name of the file appear on select
-   $(".custom-file-input").on("change", function() {
-      var fileName = $(this).val().split("\\").pop();
-      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-   });
-</script>
+<?php include 'partials/footer.php'; ?>

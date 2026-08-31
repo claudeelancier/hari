@@ -1,20 +1,12 @@
 <?php
 $title = 'Clients';
-include 'partials/header.php' ?>
-
-<!--Start Header -->
-<header class="nav-bg-w main-header navfix fixed-top menu-white">
-    <?php include 'partials/menu.php' ?>
-</header>
-
-<!--Breadcrumb Area-->
-<section class="breadcrumb-area" data-background="images/banner/4.jpg" id="breadcrumb" prTitle="Clients" brTitle="Clients">
-    <?php include 'partials/breadcrumb.php' ?>
+include 'partials/header.php';
+include 'partials/menu.php';
+?>
+<section class="page-hero" id="breadcrumb" prTitle="Clients" brTitle="Clients">
+    <?php include 'partials/breadcrumb.php'; ?>
 </section>
-<!--End Breadcrumb Area-->
-
-<!--Start Clients-->
-<section class="clients-section- bg-gradient15 pad-tb">
+<section class="section">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -687,11 +679,3 @@ include 'partials/header.php' ?>
 <!--End Clients-->
 
 <?php include 'partials/footer.php' ?>
-
-<script>
-    // Add the following code if you want the name of the file appear on select
-    $(".custom-file-input").on("change", function() {
-        var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-    });
-</script>

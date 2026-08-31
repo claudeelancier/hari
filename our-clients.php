@@ -1,20 +1,12 @@
 <?php
 $title = 'Our Clients';
-include 'partials/header.php' ?>
-
-<!--Start Header -->
-<header class="nav-bg-w main-header navfix fixed-top menu-white">
-    <?php include 'partials/menu.php' ?>
-</header>
-
-<!--Breadcrumb Area-->
-<section class="breadcrumb-area" data-background="images/banner/4.jpg" id="breadcrumb" prTitle="Our Clients" brTitle="Our Clients">
-    <?php include 'partials/breadcrumb.php' ?>
+include 'partials/header.php';
+include 'partials/menu.php';
+?>
+<section class="page-hero" id="breadcrumb" prTitle="Our Clients" brTitle="Our Clients">
+    <?php include 'partials/breadcrumb.php'; ?>
 </section>
-<!--End Breadcrumb Area-->
-
-<!--Start About-->
-<section class="clients-section- bg-gradient15 pad-tb">
+<section class="section">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">

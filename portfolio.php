@@ -1,19 +1,12 @@
 <?php
 $title = 'Some of our Works';
-include 'partials/header.php' ?>
-
-<!--Start Header -->
-<header class="nav-bg-w main-header navfix fixed-top menu-white">
-  <?php include 'partials/menu.php' ?>
-</header>
-
-<!--Breadcrumb Area-->
-<section class="breadcrumb-area" data-background="images/banner/9.jpg" id="breadcrumb" prTitle="Some of our Works" brTitle="Our Work">
-  <?php include 'partials/breadcrumb.php' ?>
+include 'partials/header.php';
+include 'partials/menu.php';
+?>
+<section class="page-hero" id="breadcrumb" prTitle="Some of our Works" brTitle="Our Work">
+  <?php include 'partials/breadcrumb.php'; ?>
 </section>
-<!--End Breadcrumb Area-->
-
-<section class="portfolio-section pad-tb">
+<section class="section">
   <div class="container">
     <div class="row justify-content-left">
       <div class="col-lg-6">
@@ -184,7 +177,7 @@ include 'partials/header.php' ?>
             </a>
           </div>
           <div class="item-info-div shdo">
-            <h4><a href="javascript:void(0)"></a>Now Way</h4>
+            <h4><a href="javascript:void(0)">Now Way</a></h4>
             <p>Website</p>
           </div>
         </div>
@@ -197,7 +190,7 @@ include 'partials/header.php' ?>
             </a>
           </div>
           <div class="item-info-div shdo">
-            <h4><a href="javascript:void(0)"></a>Mat Lab</h4>
+            <h4><a href="javascript:void(0)">Mat Lab</a></h4>
             <p>Website</p>
           </div>
         </div>
@@ -210,7 +203,7 @@ include 'partials/header.php' ?>
             </a>
           </div>
           <div class="item-info-div shdo">
-            <h4><a href="javascript:void(0)"></a>SMC Co-Operative Society</h4>
+            <h4><a href="javascript:void(0)">SMC Co-Operative Society</a></h4>
             <p>Website</p>
           </div>
         </div>
@@ -223,7 +216,7 @@ include 'partials/header.php' ?>
             </a>
           </div>
           <div class="item-info-div shdo">
-            <h4><a href="javascript:void(0)"></a>Vasantham Store</h4>
+            <h4><a href="javascript:void(0)">Vasantham Store</a></h4>
             <p>Website</p>
           </div>
         </div>
