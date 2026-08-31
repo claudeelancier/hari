@@ -29,6 +29,7 @@ if (!isset($meta_description)) {
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
       <link href="css/studio.css" rel="stylesheet">
+      <script>document.documentElement.classList.add('js');</script>
    </head>
    <body>
       <a class="skip-link" href="#main-content">Skip to content</a>

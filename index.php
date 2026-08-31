@@ -21,8 +21,7 @@
             <a href="portfolio.php" class="btn btn-line">Explore Our Work</a>
          </div>
       </div>
-      <div class="studio-panel reveal reveal-2">
-         <img src="images/home/top_rank.jpg" alt="Elancier delivery studio">
+      <div class="studio-panel">
          <div class="metric-row">
             <div class="metric"><b>13+</b><span>Years</span></div>
             <div class="metric"><b>500+</b><span>Projects</span></div>
