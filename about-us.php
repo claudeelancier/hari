@@ -4,6 +4,7 @@ $meta_description = 'Elancier Solutions is a Madurai web and mobile development 
 include 'partials/header.php';
 include 'partials/menu.php';
 ?>
+<?php $prTitle = 'About Elancier'; $brTitle = 'About Us'; ?>
 <section class="page-hero" id="breadcrumb" prTitle="About Elancier" brTitle="About Us">
    <?php include 'partials/breadcrumb.php'; ?>
 </section>
@@ -68,7 +69,7 @@ include 'partials/menu.php';
          <div class="stat"><b><span data-count="95">95</span>k</b><span>Hours Worked</span></div>
          <div class="stat"><b><span data-count="500">500</span>+</b><span>Projects Done</span></div>
       </div>
-      <p class="lede" style="margin-top:20px">Note: an older about-page graphic listed 1450 clients and 1850 projects. The figures above match the current homepage statistics.</p>
+      <!-- Source note: an older about graphic listed 1450 clients / 1850 projects; homepage stats (450 / 500) are used here. -->
    </div>
 </section>
 <?php include 'partials/footer.php'; ?>

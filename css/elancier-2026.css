@@ -314,20 +314,18 @@ body:not(.is-home) main { padding-top: 72px; }
 .bar.w70 { width: 70%; } .bar.w40 { width: 40%; } .bar.w90 { width: 90%; }
 .ui-phone .ui-screen { display: grid; gap: 8px; }
 .app-row { height: 36px; border-radius: 10px; background: rgba(255,255,255,.1); }
-.hero-enter .hero-copy > * { opacity: 0; transform: translateY(18px); }
-.hero-enter.is-ready .hero-copy > * { animation: rise .8s var(--ease) forwards; }
-.hero-enter.is-ready .hero-copy > *:nth-child(2) { animation-delay: .1s; }
-.hero-enter.is-ready .hero-copy > *:nth-child(3) { animation-delay: .2s; }
-.hero-enter.is-ready .hero-copy > *:nth-child(4) { animation-delay: .32s; }
-.hero-enter.is-ready .hero-copy > *:nth-child(5) { animation-delay: .4s; }
-.hero-enter .hero-stage { opacity: 0; transform: scale(.96); }
-.hero-enter.is-ready .hero-stage { animation: rise .9s .25s var(--ease) forwards; }
+.hero-enter .hero-copy > * { animation: rise .8s var(--ease) both; }
+.hero-enter .hero-copy > *:nth-child(2) { animation-delay: .1s; }
+.hero-enter .hero-copy > *:nth-child(3) { animation-delay: .2s; }
+.hero-enter .hero-copy > *:nth-child(4) { animation-delay: .32s; }
+.hero-enter .hero-copy > *:nth-child(5) { animation-delay: .4s; }
+.hero-enter .hero-stage { animation: rise .9s .25s var(--ease) both; }
 
 .line-reveal { overflow: hidden; display: block; }
 .line-reveal span { display: block; }
 
 /* Reveal */
-[data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+[data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); animation: rise 0s 1.6s forwards; }
 [data-reveal].is-in, [data-reveal="left"].is-in, [data-reveal="right"].is-in, [data-reveal="scale"].is-in { opacity: 1; transform: none; }
 [data-reveal="left"] { transform: translateX(-24px); }
 [data-reveal="right"] { transform: translateX(24px); }
@@ -581,7 +579,8 @@ body.is-leaving main { opacity: .6; transition: opacity .18s ease; }
 
 @media (max-width: 1023px) {
   .mega { display: none; }
-  .hero-stage { height: 340px; }
+  .hero { min-height: 0; padding: 104px 0 48px; }
+  .hero-stage { height: 300px; }
   h1 { font-size: clamp(2rem, 9vw, 3.2rem); }
   .section { padding: 72px 0; }
 }
