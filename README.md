@@ -1,9 +1,5 @@
 # Elancier Solutions website
 
-Premium light-theme redesign of [elancier.com](https://elancier.com/). PHP pages keep the original public URLs (`index.php`, `about-us.php`, `contact.php`, service routes). The contact form posts to `api/contact.php` with the same fields as the previous site (name, email, mobile, subject, message).
+Plain PHP + Bootstrap + jQuery site with a 2026 light-theme overlay (`css/theme-2026.css`).
 
-Run locally:
-
-```bash
-php -S localhost:8080
-```
+Host by uploading this folder to the web root. Requires PHP mail for `php/form-process.php`.

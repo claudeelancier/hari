@@ -1,2 +1,4 @@
-data/inquiries.log
+error_log
 .DS_Store
+css/.DS_Store
+*.zip

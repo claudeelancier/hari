@@ -1,37 +1,81 @@
 <?php
-require __DIR__ . '/includes/service-page.php';
+$title = 'Web Development';
+include 'partials/header.php' ?>
 
-service_page([
-    'title' => 'Mobile App Development | Android & iOS | Elancier',
-    'description' => 'Android and iPhone application development by Elancier Solutions in Madurai.',
-    'canonical' => 'https://elancier.com/mobileapp-development.php',
-    'active' => 'service-mobile',
-    'crumb' => 'Mobile Apps',
-    'eyebrow' => 'Mobile app development',
-    'heading' => 'Android and iOS products with a plan, not just a screen.',
-    'lede' => 'Whether you need a business app or a mobile-first campaign, we plan the architecture, the user experience and how the product connects to the rest of your systems.',
-    'faq' => [
-        ['Do you build native Android and iOS apps?', 'Yes. Android and iPhone application development are listed services, each with its own planning and delivery path.'],
-        ['Can an app connect to an existing website?', 'That integration is part of how we plan the product, not an afterthought.'],
-    ],
-    'jsonld' => ['@type' => 'Service', 'name' => 'Mobile App Development', 'provider' => ['@id' => 'https://elancier.com/#org']],
-], [
-    [
-        'id' => 'Android',
-        'eyebrow' => 'Android app development',
-        'title' => 'We build for Android and use what the platform offers',
-        'copy' => [
-            'Every mobile solution needs planning: the end-user experience, and how the app sits with your existing infrastructure. We treat Android work as product work, not a wrapper around a website.',
-        ],
-        'points' => ['Android', 'Responsive layouts', 'Performance'],
-    ],
-    [
-        'id' => 'IOS',
-        'eyebrow' => 'iOS app development',
-        'title' => 'iPhone applications that stay useful',
-        'copy' => [
-            'Our iPhone application development group focuses on inventive, adaptable products with a high usability bar — applications people can live with, not just download once.',
-        ],
-        'points' => ['iPhone', 'iOS'],
-    ],
-]);
+<!--Start Header -->
+<header class="nav-bg-w main-header navfix fixed-top menu-white">
+   <?php include 'partials/menu.php' ?>
+</header>
+
+<!--Breadcrumb Area-->
+<section class="breadcrumb-area" data-background="images/banner/9.jpg" id="breadcrumb" prTitle="MOBILE APP DEVELOPMENT" brTitle="Services">
+   <?php include 'partials/breadcrumb.php' ?>
+</section>
+<!--End Breadcrumb Area-->
+
+<!-- Corporate Identity end here -->
+
+<section class="service pad-tb bg-gradient5" id="Android">
+   <!-- bg-gradient5 -->
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-8 block-1 m-mt50">
+            <div class="common-heading text-l pl25">
+               <span>Android App Development</span>
+               <h2>We build for Android, we make full use of Android's functionality. </h2>
+               <p>We build for Android, we make full use of Android's functionality. Whether it's creating mobile solutions be it an app for your business or a mobile optimized campaign - every solution requires a lot of planning and strategy to go into the architecture of the end user experience and how does it integrate back into your existing infrastructure.</p>
+               <ul class="-service-list mt10">
+                  <li> <a href="#">Android App</a> </li>
+                  <li> <a href="#">Responsive</a> </li>
+                  <li> <a href="#">Speed</a></li>
+               </ul>
+            </div>
+         </div>
+
+         <div class="col-lg-4">
+            <div class="single-image bg-shape-dez mt0 wow fadeIn">
+               <img src="images/mobile-app/mobile-app.jpg" alt="image" class="img-fluid no-shadow" />
+            </div>
+         </div>
+
+      </div>
+   </div>
+</section>
+
+<!-- Corporate Identity end here -->
+
+
+<!-- Indoor Collaterals start here -->
+
+<section class="service pad-tb" id="IOS">
+   <!-- bg-gradient5 -->
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-4">
+            <div class="single-image bg-shape-dez mt0 wow fadeIn">
+               <img src="images/mobile-app/iphone_app.jpg" alt="image" class="img-fluid no-shadow" />
+            </div>
+         </div>
+         <div class="col-lg-8 block-1 m-mt50">
+            <div class="common-heading text-l pl25">
+               <span>IOS App Development</span>
+               <h2>iPhone Application Development</h2>
+               <p>Our iPhone Application Development group improves with applications that are inventive, adaptable and have high convenience remainder.</p>
+               <ul class="-service-list mt10">
+                  <li> <a href="#">Iphone App</a> </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- Indoor Collaterals end here -->
+
+
+<section class="portfolio-section pad-tb">
+   <?php include 'card_portfolio.php' ?>
+</section>
+
+
+<?php include 'partials/footer.php' ?>
