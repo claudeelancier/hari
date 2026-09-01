@@ -1,0 +1,8 @@
+{
+  "name": "Nuvora",
+  "short_name": "Nuvora",
+  "icons": [{ "src": "assets/images/icons/favicon.svg", "sizes": "any", "type": "image/svg+xml" }],
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f74780"
+}
