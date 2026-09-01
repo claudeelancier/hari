@@ -24,6 +24,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: auto; }
 html, body { max-width: 100%; overflow-x: hidden; }
+.marquee { overflow: hidden; max-width: 100%; }
 body {
   margin: 0;
   background: var(--bg);
@@ -52,8 +53,8 @@ button, input, textarea { font: inherit; }
   z-index: 10001;
 }
 .skip:focus { top: 1rem; }
-.btn--header { display: none; }
-@media (min-width: 1024px) { .btn--header { display: inline-flex; } }
+.btn.btn--header { display: none; }
+@media (min-width: 1024px) { .btn.btn--header { display: inline-flex; } }
 
 .container {
   width: min(var(--container), calc(100% - 2.5rem));
@@ -1085,6 +1086,8 @@ legend { font-family: var(--font-display), sans-serif; font-size: 1.6rem; letter
   .c-cursor { display: none !important; }
   html.has-cursor, html.has-cursor * { cursor: auto !important; }
 }
+
+@media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation: none !important;
     transition: none !important;
