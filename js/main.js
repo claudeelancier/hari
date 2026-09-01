@@ -114,9 +114,10 @@
     }
 
     document.querySelectorAll("form[data-validate]").forEach(function (form) {
+      form.setAttribute("novalidate", "novalidate");
       form.addEventListener("submit", function (e) {
         e.preventDefault();
-        const msg = form.querySelector(".form-msg");
+        const msg = form.querySelector(".form-msg") || form.parentElement.querySelector(".form-msg");
         const email = form.querySelector("input[type='email']");
         const required = form.querySelectorAll("[required]");
         let ok = true;

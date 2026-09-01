@@ -31,6 +31,11 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.swiper {
+  overflow: hidden;
 }
 
 body {
@@ -787,6 +792,8 @@ p { margin: 0 0 16px; }
   max-width: 560px;
   margin: 0 auto;
   gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .news-form input,
@@ -935,6 +942,7 @@ p { margin: 0 0 16px; }
   background: var(--primary-soft);
   color: var(--primary);
   font-size: 12px;
+  font-weight: 600;
   padding: 4px 8px;
   border-radius: 20px;
 }
