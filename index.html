@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sri Murugan Travel Agency — Living Kolam Hero</title>
+    <meta
+      name="description"
+      content="Sri Murugan Travel Agency, Madurai. Pilgrimage, domestic and international tours since 1985."
+    />
+    <link rel="icon" href="https://www.srimurugantravel.com/images/favicon/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@500;600;700&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/hero.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="cursor" id="cursor" aria-hidden="true">
+      <svg viewBox="0 0 32 48" fill="none">
+        <path d="M16 2 L19 28 L16 46 L13 28 Z" fill="currentColor" />
+        <path d="M8 18 L16 14 L24 18 L16 22 Z" fill="currentColor" opacity="0.85" />
+      </svg>
+    </div>
+
+    <header class="nav">
+      <a class="brand" href="https://www.srimurugantravel.com/">
+        <img src="https://www.srimurugantravel.com/images/logo.png" alt="" width="44" height="44" />
+        <span>
+          Sri Murugan
+          <small>Travel Agency · Madurai</small>
+        </span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="https://www.srimurugantravel.com/train">Train</a>
+        <a href="https://www.srimurugantravel.com/domestic">Domestic</a>
+        <a href="https://www.srimurugantravel.com/international">World</a>
+        <a href="https://www.srimurugantravel.com/contact">Contact</a>
+      </nav>
+      <a class="call" href="tel:+919791848265">
+        <i></i>
+        +91 97918 48265
+      </a>
+    </header>
+
+    <section class="hero" id="hero">
+      <canvas id="kolam" class="kolam" aria-hidden="true"></canvas>
+      <div class="dawn" id="dawn" aria-hidden="true"></div>
+      <div class="heat" aria-hidden="true"></div>
+
+      <div class="copy">
+        <p class="kicker">
+          <span class="kicker__dot"></span>
+          IATA · Govt. of India approved · Est. 1985
+        </p>
+        <h1 class="title" id="title">
+          <span class="title__ta" data-assemble="யாத்திரை">யாத்திரை</span>
+          <span class="title__en" data-assemble="begins in Madurai">begins in Madurai</span>
+        </h1>
+        <p class="lede">
+          A living kolam of journeys — pilgrimage, flight, rail and sea —
+          drawn from the courtyard of Meenakshi, for forty years.
+        </p>
+        <div class="actions">
+          <a class="btn btn--fire" href="https://www.srimurugantravel.com/enquire">
+            <span>Plan a yatra</span>
+            <em></em>
+          </a>
+          <a class="btn btn--ghost" href="https://www.srimurugantravel.com/packages">Browse packages</a>
+        </div>
+        <ul class="stats">
+          <li><b>1985</b><span>Founded</span></li>
+          <li><b>4</b><span>Modes</span></li>
+          <li><b>Lakhs</b><span>Travellers</span></li>
+          <li><b>IATA</b><span>Authorized</span></li>
+        </ul>
+      </div>
+
+      <aside class="oracle" aria-live="polite">
+        <div class="oracle__ticks" aria-hidden="true"></div>
+        <div class="oracle__lens" id="lens">
+          <div class="oracle__film" id="film"></div>
+          <div class="oracle__sweep"></div>
+          <div class="oracle__iris"></div>
+        </div>
+        <div class="oracle__readout">
+          <p class="oracle__index" id="idx">01</p>
+          <p class="oracle__ta" id="nameTa">காசி</p>
+          <p class="oracle__en" id="nameEn">Kasi · Ayodhya</p>
+          <p class="oracle__price" id="price">INR 24,990 onwards · Ex Madurai</p>
+        </div>
+        <div class="oracle__hint">Hover a pulli · the yatra follows</div>
+      </aside>
+
+      <div class="chariot" id="chariot" aria-hidden="true"></div>
+    </section>
+
+    <script src="./js/hero.js"></script>
+  </body>
+</html>
